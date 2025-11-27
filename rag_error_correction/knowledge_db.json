@@ -1,0 +1,34 @@
+[
+    {
+        "id": "ERR_001",
+        "error_signature": "Sync Timeout: PSS not found in NR mode",
+        "context": "5G NR, Initial Access, Low SNR",
+        "3gpp_ref": "TS 38.213 Section 4.1",
+        "solution_text": "Increase the synchronization search window size and enable accumulation over multiple frames.",
+        "action_code": "SET_SYNC_WINDOW_LARGE; ENABLE_ACCUMULATION"
+    },
+    {
+        "id": "ERR_002",
+        "error_signature": "Demodulation Error: EVM too high in 16QAM",
+        "context": "5G NR, Data Channel, High Doppler",
+        "3gpp_ref": "TS 38.101 Section 6.5",
+        "solution_text": "Switch to a more robust Modulation and Coding Scheme (MCS) or enable frequency offset correction.",
+        "action_code": "SWITCH_MOD_QPSK; ENABLE_CFO_CORRECTION"
+    },
+    {
+        "id": "ERR_003",
+        "error_signature": "Handover Failure: Target cell signal weak",
+        "context": "LTE to NR Handover",
+        "3gpp_ref": "TS 36.331 Section 5.3.5",
+        "solution_text": "Trigger measurement report earlier or lower the handover threshold (A3 event).",
+        "action_code": "LOWER_HO_THRESHOLD_3DB"
+    },
+    {
+        "id": "ERR_004",
+        "error_signature": "WiFi Preamble Detection Fluctuation",
+        "context": "WiFi 6, CSMA/CA",
+        "3gpp_ref": "N/A (IEEE 802.11ax)",
+        "solution_text": "Adjust CCA (Clear Channel Assessment) threshold to avoid false alarms.",
+        "action_code": "ADJUST_CCA_THRESHOLD_UP"
+    }
+]
