@@ -14,14 +14,24 @@ module multi_standard_rx(
     output wire [7:0] bits_out_1, output wire bits_valid_1,
     output wire [7:0] bits_out_2, output wire bits_valid_2,
     output wire [7:0] bits_out_3, output wire bits_valid_3,
-    output wire sync_found_combined
+    output wire sync_found_combined,
+    output wire tready_global // New output for flow control
 );
-wire [11:0] fft_len;
-wire [7:0]  cp_len;
+wire [12:0] fft_len;
+wire [8:0]  cp_len;
 wire [3:0]  mod_type;
+wire config_update; // Internal signal
 
-mode_ctrl u_mode_ctrl(.clk(clk), .rst(rst), .mode_sel(mode_sel),
-                      .fft_len(fft_len), .cp_len(cp_len), .mod_type(mod_type));
+mode_ctrl u_mode_ctrl(
+    .clk(clk), 
+    .rst(rst), 
+    .mode_sel(mode_sel),
+    .tready_global(tready_global),
+    .config_update(config_update),
+    .fft_len(fft_len), 
+    .cp_len(cp_len), 
+    .mod_type(mod_type)
+);
 
 // Sync Detect Instances
 wire sync_found_0, sync_found_1, sync_found_2, sync_found_3;
@@ -29,10 +39,11 @@ wire [15:0] freq_offset_0, freq_offset_1, freq_offset_2, freq_offset_3; // unuse
 wire [63:0] corr_E_0, corr_E_1, corr_E_2, corr_E_3;
 wire [63:0] total_E_0, total_E_1, total_E_2, total_E_3;
 
-sync_detect u_sync_0(.clk(clk), .rst(rst), .din_re(din_re_0), .din_im(din_im_0), .din_valid(din_valid), .fft_len(fft_len), .sync_found(sync_found_0), .freq_offset(freq_offset_0), .corr_energy_out(corr_E_0), .total_energy_out(total_E_0));
-sync_detect u_sync_1(.clk(clk), .rst(rst), .din_re(din_re_1), .din_im(din_im_1), .din_valid(din_valid), .fft_len(fft_len), .sync_found(sync_found_1), .freq_offset(freq_offset_1), .corr_energy_out(corr_E_1), .total_energy_out(total_E_1));
-sync_detect u_sync_2(.clk(clk), .rst(rst), .din_re(din_re_2), .din_im(din_im_2), .din_valid(din_valid), .fft_len(fft_len), .sync_found(sync_found_2), .freq_offset(freq_offset_2), .corr_energy_out(corr_E_2), .total_energy_out(total_E_2));
-sync_detect u_sync_3(.clk(clk), .rst(rst), .din_re(din_re_3), .din_im(din_im_3), .din_valid(din_valid), .fft_len(fft_len), .sync_found(sync_found_3), .freq_offset(freq_offset_3), .corr_energy_out(corr_E_3), .total_energy_out(total_E_3));
+// Pass config_update to sync instances
+sync_detect u_sync_0(.clk(clk), .rst(rst), .config_update(config_update), .din_re(din_re_0), .din_im(din_im_0), .din_valid(din_valid), .fft_len(fft_len), .sync_found(sync_found_0), .freq_offset(freq_offset_0), .corr_energy_out(corr_E_0), .total_energy_out(total_E_0));
+sync_detect u_sync_1(.clk(clk), .rst(rst), .config_update(config_update), .din_re(din_re_1), .din_im(din_im_1), .din_valid(din_valid), .fft_len(fft_len), .sync_found(sync_found_1), .freq_offset(freq_offset_1), .corr_energy_out(corr_E_1), .total_energy_out(total_E_1));
+sync_detect u_sync_2(.clk(clk), .rst(rst), .config_update(config_update), .din_re(din_re_2), .din_im(din_im_2), .din_valid(din_valid), .fft_len(fft_len), .sync_found(sync_found_2), .freq_offset(freq_offset_2), .corr_energy_out(corr_E_2), .total_energy_out(total_E_2));
+sync_detect u_sync_3(.clk(clk), .rst(rst), .config_update(config_update), .din_re(din_re_3), .din_im(din_im_3), .din_valid(din_valid), .fft_len(fft_len), .sync_found(sync_found_3), .freq_offset(freq_offset_3), .corr_energy_out(corr_E_3), .total_energy_out(total_E_3));
 
 // MIMO Sync Combination (Energy Sum)
 /* verilator lint_off WIDTHEXPAND */

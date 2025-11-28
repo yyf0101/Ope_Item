@@ -23,6 +23,7 @@ Vmulti_standard_rx::Vmulti_standard_rx(VerilatedContext* _vcontextp__, const cha
     , bits_out_3{vlSymsp->TOP.bits_out_3}
     , bits_valid_3{vlSymsp->TOP.bits_valid_3}
     , sync_found_combined{vlSymsp->TOP.sync_found_combined}
+    , tready_global{vlSymsp->TOP.tready_global}
     , din_re_0{vlSymsp->TOP.din_re_0}
     , din_im_0{vlSymsp->TOP.din_im_0}
     , din_re_1{vlSymsp->TOP.din_re_1}

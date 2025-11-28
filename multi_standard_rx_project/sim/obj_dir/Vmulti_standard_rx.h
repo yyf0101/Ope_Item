@@ -42,6 +42,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vmulti_standard_rx VL_NOT_FINAL : public Veri
     VL_OUT8(&bits_out_3,7,0);
     VL_OUT8(&bits_valid_3,0,0);
     VL_OUT8(&sync_found_combined,0,0);
+    VL_OUT8(&tready_global,0,0);
     VL_IN16(&din_re_0,15,0);
     VL_IN16(&din_im_0,15,0);
     VL_IN16(&din_re_1,15,0);

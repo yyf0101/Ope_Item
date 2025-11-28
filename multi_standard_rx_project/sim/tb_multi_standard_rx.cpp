@@ -60,7 +60,8 @@ int main(int argc, char **argv) {
                 std::cout << "Switching to WiFi at time " << sim_time << std::endl;
             }
 
-            if (idx < current_syms[0].size()) {
+            // Flow Control: Only send data if tready_global is HIGH
+            if (top->tready_global && idx < current_syms[0].size()) {
                 top->din_re_0 = current_syms[0][idx].first; top->din_im_0 = current_syms[0][idx].second;
                 top->din_re_1 = current_syms[1][idx].first; top->din_im_1 = current_syms[1][idx].second;
                 top->din_re_2 = current_syms[2][idx].first; top->din_im_2 = current_syms[2][idx].second;
@@ -69,6 +70,8 @@ int main(int argc, char **argv) {
                 idx++;
             } else {
                 top->din_valid = 0;
+                // Keep previous values or zero out? Usually zero out valid is enough.
+                // But to be clean:
                 top->din_re_0 = 0; top->din_im_0 = 0;
                 top->din_re_1 = 0; top->din_im_1 = 0;
                 top->din_re_2 = 0; top->din_im_2 = 0;
@@ -82,12 +85,8 @@ int main(int argc, char **argv) {
         tfp->dump(sim_time); // 每个时间步dump
 
         if (top->clk == 1 && top->bits_valid_0) {
-             std::cout << "Time: " << sim_time
-                       << " Mode: " << (int)top->mode_sel
-                       << " Bits0: " << (int)top->bits_out_0 
-                       << " Bits1: " << (int)top->bits_out_1
-                       << " Bits2: " << (int)top->bits_out_2
-                       << " Bits3: " << (int)top->bits_out_3 << std::endl;
+             // Optional: Print some output to verify
+             // std::cout << "Time: " << sim_time << " Bits Valid" << std::endl;
         }
         
         sim_time++;

@@ -44,7 +44,7 @@ VL_ATTR_COLD void Vmulti_standard_rx___024root___eval_settle(Vmulti_standard_rx_
 #ifdef VL_DEBUG
             Vmulti_standard_rx___024root___dump_triggers__stl(vlSelfRef.__VstlTriggered, "stl"s);
 #endif
-            VL_FATAL_MT("../rtl/multi_standard_rx.v", 2, "", "Settle region did not converge after 100 tries");
+            VL_FATAL_MT("../rtl/../rtl/multi_standard_rx.v", 2, "", "Settle region did not converge after 100 tries");
         }
         __VstlIterCount = ((IData)(1U) + __VstlIterCount);
     } while (Vmulti_standard_rx___024root___eval_phase__stl(vlSelf));
@@ -96,11 +96,17 @@ VL_ATTR_COLD bool Vmulti_standard_rx___024root___trigger_anySet__stl(const VlUnp
     return (0U);
 }
 
+extern const VlUnpacked<SData/*12:0*/, 4> Vmulti_standard_rx__ConstPool__TABLE_h638be961_0;
+extern const VlUnpacked<SData/*8:0*/, 4> Vmulti_standard_rx__ConstPool__TABLE_h387259c0_0;
+extern const VlUnpacked<CData/*3:0*/, 4> Vmulti_standard_rx__ConstPool__TABLE_h33cf680e_0;
+
 VL_ATTR_COLD void Vmulti_standard_rx___024root___stl_sequent__TOP__0(Vmulti_standard_rx___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmulti_standard_rx___024root___stl_sequent__TOP__0\n"); );
     Vmulti_standard_rx__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Locals
+    CData/*1:0*/ __Vtableidx1;
+    __Vtableidx1 = 0;
     VlWide<3>/*95:0*/ __Vtemp_2;
     VlWide<3>/*95:0*/ __Vtemp_3;
     VlWide<3>/*95:0*/ __Vtemp_4;
@@ -170,11 +176,53 @@ VL_ATTR_COLD void Vmulti_standard_rx___024root___stl_sequent__TOP__0(Vmulti_stan
     vlSelfRef.multi_standard_rx__DOT__total_E_3 = VL_MULS_QQQ(64, 
                                                               VL_EXTENDS_QQ(64,48, vlSelfRef.multi_standard_rx__DOT__u_sync_3__DOT__sum_energy), 
                                                               VL_EXTENDS_QQ(64,48, vlSelfRef.multi_standard_rx__DOT__u_sync_3__DOT__sum_energy));
-    vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__delay_len 
-        = ((0x0100U == (IData)(vlSelfRef.multi_standard_rx__DOT__fft_len))
-            ? 0x10U : ((0x0800U == (IData)(vlSelfRef.multi_standard_rx__DOT__fft_len))
-                        ? 0x40U : ((0U == (IData)(vlSelfRef.multi_standard_rx__DOT__fft_len))
-                                    ? 0x80U : 0x10U)));
+    __Vtableidx1 = vlSelfRef.mode_sel;
+    vlSelfRef.multi_standard_rx__DOT__fft_len = Vmulti_standard_rx__ConstPool__TABLE_h638be961_0
+        [__Vtableidx1];
+    vlSelfRef.multi_standard_rx__DOT__cp_len = Vmulti_standard_rx__ConstPool__TABLE_h387259c0_0
+        [__Vtableidx1];
+    vlSelfRef.multi_standard_rx__DOT__mod_type = Vmulti_standard_rx__ConstPool__TABLE_h33cf680e_0
+        [__Vtableidx1];
+    vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__rd_ptr 
+        = (0x00000fffU & ((IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__wr_ptr) 
+                          - ((0x0100U == (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__active_fft_len))
+                              ? 0x0010U : ((0x0800U 
+                                            == (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__active_fft_len))
+                                            ? 0x0040U
+                                            : ((0x1000U 
+                                                == (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__active_fft_len))
+                                                ? 0x0080U
+                                                : 0x0040U)))));
+    vlSelfRef.multi_standard_rx__DOT__u_sync_1__DOT__rd_ptr 
+        = (0x00000fffU & ((IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_1__DOT__wr_ptr) 
+                          - ((0x0100U == (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_1__DOT__active_fft_len))
+                              ? 0x0010U : ((0x0800U 
+                                            == (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_1__DOT__active_fft_len))
+                                            ? 0x0040U
+                                            : ((0x1000U 
+                                                == (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_1__DOT__active_fft_len))
+                                                ? 0x0080U
+                                                : 0x0040U)))));
+    vlSelfRef.multi_standard_rx__DOT__u_sync_2__DOT__rd_ptr 
+        = (0x00000fffU & ((IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_2__DOT__wr_ptr) 
+                          - ((0x0100U == (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_2__DOT__active_fft_len))
+                              ? 0x0010U : ((0x0800U 
+                                            == (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_2__DOT__active_fft_len))
+                                            ? 0x0040U
+                                            : ((0x1000U 
+                                                == (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_2__DOT__active_fft_len))
+                                                ? 0x0080U
+                                                : 0x0040U)))));
+    vlSelfRef.multi_standard_rx__DOT__u_sync_3__DOT__rd_ptr 
+        = (0x00000fffU & ((IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_3__DOT__wr_ptr) 
+                          - ((0x0100U == (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_3__DOT__active_fft_len))
+                              ? 0x0010U : ((0x0800U 
+                                            == (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_3__DOT__active_fft_len))
+                                            ? 0x0040U
+                                            : ((0x1000U 
+                                                == (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_3__DOT__active_fft_len))
+                                                ? 0x0080U
+                                                : 0x0040U)))));
     __Vtemp_2[0U] = (IData)(vlSelfRef.multi_standard_rx__DOT__total_E_0);
     __Vtemp_2[1U] = (IData)((vlSelfRef.multi_standard_rx__DOT__total_E_0 
                              >> 0x00000020U));
@@ -200,18 +248,6 @@ VL_ATTR_COLD void Vmulti_standard_rx___024root___stl_sequent__TOP__0(Vmulti_stan
         = __Vtemp_8[1U];
     vlSelfRef.multi_standard_rx__DOT__sum_total_E[2U] 
         = (3U & __Vtemp_8[2U]);
-    vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__rd_ptr 
-        = (0x0000007fU & ((IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__wr_ptr) 
-                          - (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__delay_len)));
-    vlSelfRef.multi_standard_rx__DOT__u_sync_1__DOT__rd_ptr 
-        = (0x0000007fU & ((IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_1__DOT__wr_ptr) 
-                          - (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__delay_len)));
-    vlSelfRef.multi_standard_rx__DOT__u_sync_2__DOT__rd_ptr 
-        = (0x0000007fU & ((IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_2__DOT__wr_ptr) 
-                          - (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__delay_len)));
-    vlSelfRef.multi_standard_rx__DOT__u_sync_3__DOT__rd_ptr 
-        = (0x0000007fU & ((IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_3__DOT__wr_ptr) 
-                          - (IData)(vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__delay_len)));
     vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__prod_re_delayed 
         = vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__prod_re_buf
         [vlSelfRef.multi_standard_rx__DOT__u_sync_0__DOT__rd_ptr];
@@ -412,9 +448,11 @@ VL_ATTR_COLD void Vmulti_standard_rx___024root___ctor_var_reset(Vmulti_standard_
     vlSelf->bits_out_3 = VL_SCOPED_RAND_RESET_I(8, __VscopeHash, 12396368174232462152ull);
     vlSelf->bits_valid_3 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 16918268148187754229ull);
     vlSelf->sync_found_combined = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 13617738379863895274ull);
-    vlSelf->multi_standard_rx__DOT__fft_len = VL_SCOPED_RAND_RESET_I(12, __VscopeHash, 2475468519966770389ull);
-    vlSelf->multi_standard_rx__DOT__cp_len = VL_SCOPED_RAND_RESET_I(8, __VscopeHash, 7240345714678099902ull);
+    vlSelf->tready_global = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 8262224071140035809ull);
+    vlSelf->multi_standard_rx__DOT__fft_len = VL_SCOPED_RAND_RESET_I(13, __VscopeHash, 2475468519966770389ull);
+    vlSelf->multi_standard_rx__DOT__cp_len = VL_SCOPED_RAND_RESET_I(9, __VscopeHash, 7240345714678099902ull);
     vlSelf->multi_standard_rx__DOT__mod_type = VL_SCOPED_RAND_RESET_I(4, __VscopeHash, 12897575935566243651ull);
+    vlSelf->multi_standard_rx__DOT__config_update = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 1528554626118504902ull);
     vlSelf->multi_standard_rx__DOT__sync_found_0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 2212708803575190895ull);
     vlSelf->multi_standard_rx__DOT__sync_found_1 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 12991037366044703276ull);
     vlSelf->multi_standard_rx__DOT__sync_found_2 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 11584508745100249411ull);
@@ -433,27 +471,30 @@ VL_ATTR_COLD void Vmulti_standard_rx___024root___ctor_var_reset(Vmulti_standard_
     vlSelf->multi_standard_rx__DOT__total_E_3 = VL_SCOPED_RAND_RESET_Q(64, __VscopeHash, 1239682470736554472ull);
     VL_SCOPED_RAND_RESET_W(66, vlSelf->multi_standard_rx__DOT__sum_total_E, __VscopeHash, 4777916633079440834ull);
     vlSelf->multi_standard_rx__DOT__sync_combined = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 15586220782834442424ull);
-    vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__delay_len = VL_SCOPED_RAND_RESET_I(8, __VscopeHash, 11104888214350961753ull);
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    vlSelf->multi_standard_rx__DOT__u_mode_ctrl__DOT__state = VL_SCOPED_RAND_RESET_I(3, __VscopeHash, 4660086561852507353ull);
+    vlSelf->multi_standard_rx__DOT__u_mode_ctrl__DOT__current_mode = VL_SCOPED_RAND_RESET_I(2, __VscopeHash, 15518474288330263765ull);
+    vlSelf->multi_standard_rx__DOT__u_mode_ctrl__DOT__timer = VL_SCOPED_RAND_RESET_I(8, __VscopeHash, 12353605819522528361ull);
+    vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__active_fft_len = VL_SCOPED_RAND_RESET_I(13, __VscopeHash, 7750980670311850929ull);
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__buf_re[__Vi0] = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 5471936684030454941ull);
     }
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__buf_im[__Vi0] = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 1023995064859566445ull);
     }
-    vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__wr_ptr = VL_SCOPED_RAND_RESET_I(7, __VscopeHash, 17841449295457672559ull);
-    vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__rd_ptr = VL_SCOPED_RAND_RESET_I(7, __VscopeHash, 1296711163957332177ull);
+    vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__wr_ptr = VL_SCOPED_RAND_RESET_I(12, __VscopeHash, 17841449295457672559ull);
+    vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__rd_ptr = VL_SCOPED_RAND_RESET_I(12, __VscopeHash, 1296711163957332177ull);
     vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__delayed_re = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 9985315256091487396ull);
     vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__delayed_im = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 11954256931659835543ull);
     vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__prod_re = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 8967757164189266089ull);
     vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__prod_im = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 16060801846227865869ull);
     vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__energy_term = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 5358295598196270269ull);
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__prod_re_buf[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 13597913982871054485ull);
     }
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__prod_im_buf[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 3657153412517425325ull);
     }
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__energy_buf[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 10106871149002910063ull);
     }
     vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__prod_re_delayed = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 18191619960120346318ull);
@@ -463,26 +504,27 @@ VL_ATTR_COLD void Vmulti_standard_rx___024root___ctor_var_reset(Vmulti_standard_
     vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__sum_prod_im = VL_SCOPED_RAND_RESET_Q(48, __VscopeHash, 9734154761162318890ull);
     vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__sum_energy = VL_SCOPED_RAND_RESET_Q(48, __VscopeHash, 3300751469116923333ull);
     vlSelf->multi_standard_rx__DOT__u_sync_0__DOT__i = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 677027171312029163ull);
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__active_fft_len = VL_SCOPED_RAND_RESET_I(13, __VscopeHash, 12451832019990786180ull);
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__buf_re[__Vi0] = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 15044848978721467904ull);
     }
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__buf_im[__Vi0] = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 7057458430371495910ull);
     }
-    vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__wr_ptr = VL_SCOPED_RAND_RESET_I(7, __VscopeHash, 11205625645177872371ull);
-    vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__rd_ptr = VL_SCOPED_RAND_RESET_I(7, __VscopeHash, 7798386761023826487ull);
+    vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__wr_ptr = VL_SCOPED_RAND_RESET_I(12, __VscopeHash, 11205625645177872371ull);
+    vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__rd_ptr = VL_SCOPED_RAND_RESET_I(12, __VscopeHash, 7798386761023826487ull);
     vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__delayed_re = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 16860285324106919519ull);
     vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__delayed_im = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 17548576259181193861ull);
     vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__prod_re = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 15320267861681673128ull);
     vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__prod_im = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 14310516941802130759ull);
     vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__energy_term = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 5686398339210365650ull);
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__prod_re_buf[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 13081604277534376179ull);
     }
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__prod_im_buf[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 4755049111603532446ull);
     }
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__energy_buf[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 5087118873393668485ull);
     }
     vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__prod_re_delayed = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 10303629255696510397ull);
@@ -492,26 +534,27 @@ VL_ATTR_COLD void Vmulti_standard_rx___024root___ctor_var_reset(Vmulti_standard_
     vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__sum_prod_im = VL_SCOPED_RAND_RESET_Q(48, __VscopeHash, 1905315574036399266ull);
     vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__sum_energy = VL_SCOPED_RAND_RESET_Q(48, __VscopeHash, 6435689634806668313ull);
     vlSelf->multi_standard_rx__DOT__u_sync_1__DOT__i = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 8357676335449313956ull);
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__active_fft_len = VL_SCOPED_RAND_RESET_I(13, __VscopeHash, 15264848235491209338ull);
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__buf_re[__Vi0] = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 3180855584828841668ull);
     }
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__buf_im[__Vi0] = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 14802921635744383190ull);
     }
-    vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__wr_ptr = VL_SCOPED_RAND_RESET_I(7, __VscopeHash, 2014514290564018748ull);
-    vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__rd_ptr = VL_SCOPED_RAND_RESET_I(7, __VscopeHash, 4048513849236699461ull);
+    vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__wr_ptr = VL_SCOPED_RAND_RESET_I(12, __VscopeHash, 2014514290564018748ull);
+    vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__rd_ptr = VL_SCOPED_RAND_RESET_I(12, __VscopeHash, 4048513849236699461ull);
     vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__delayed_re = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 10619554934113277011ull);
     vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__delayed_im = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 18334282795488110941ull);
     vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__prod_re = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 5087456087039531982ull);
     vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__prod_im = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 2353302514886333848ull);
     vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__energy_term = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 14348283803970463838ull);
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__prod_re_buf[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 6682569130647873886ull);
     }
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__prod_im_buf[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 6109922490550697265ull);
     }
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__energy_buf[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 3150535120909917410ull);
     }
     vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__prod_re_delayed = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 8222722072045152638ull);
@@ -521,26 +564,27 @@ VL_ATTR_COLD void Vmulti_standard_rx___024root___ctor_var_reset(Vmulti_standard_
     vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__sum_prod_im = VL_SCOPED_RAND_RESET_Q(48, __VscopeHash, 10953437357033882586ull);
     vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__sum_energy = VL_SCOPED_RAND_RESET_Q(48, __VscopeHash, 8256795877199381087ull);
     vlSelf->multi_standard_rx__DOT__u_sync_2__DOT__i = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 5777631870577737731ull);
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__active_fft_len = VL_SCOPED_RAND_RESET_I(13, __VscopeHash, 858761316457514554ull);
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__buf_re[__Vi0] = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 5304549415523354870ull);
     }
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__buf_im[__Vi0] = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 13951097043626923236ull);
     }
-    vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__wr_ptr = VL_SCOPED_RAND_RESET_I(7, __VscopeHash, 10451163018537656288ull);
-    vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__rd_ptr = VL_SCOPED_RAND_RESET_I(7, __VscopeHash, 11347447523938443446ull);
+    vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__wr_ptr = VL_SCOPED_RAND_RESET_I(12, __VscopeHash, 10451163018537656288ull);
+    vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__rd_ptr = VL_SCOPED_RAND_RESET_I(12, __VscopeHash, 11347447523938443446ull);
     vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__delayed_re = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 16672840136393593388ull);
     vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__delayed_im = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 17279285546917449741ull);
     vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__prod_re = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 15684730620195779983ull);
     vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__prod_im = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 4030522953780758566ull);
     vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__energy_term = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 10816255638323201607ull);
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__prod_re_buf[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 11285100260138999537ull);
     }
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__prod_im_buf[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 12967049952677589265ull);
     }
-    for (int __Vi0 = 0; __Vi0 < 128; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 4096; ++__Vi0) {
         vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__energy_buf[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 70392337202750467ull);
     }
     vlSelf->multi_standard_rx__DOT__u_sync_3__DOT__prod_re_delayed = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 12742227694305771949ull);

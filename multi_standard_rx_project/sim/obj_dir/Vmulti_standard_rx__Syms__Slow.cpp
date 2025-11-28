@@ -11,7 +11,7 @@ Vmulti_standard_rx__Syms::Vmulti_standard_rx__Syms(VerilatedContext* contextp, c
     , TOP{this, namep}
 {
     // Check resources
-    Verilated::stackCheck(1260);
+    Verilated::stackCheck(1284);
     // Setup sub module instances
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-12);
