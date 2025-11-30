@@ -1,66 +1,102 @@
 class HardwareInterface:
     """
     Simulates the interface between the CPU (running RAG) and the FPGA/ASIC.
+    Implements the CSR registers defined in Table 5-1.
     """
     def __init__(self):
-        # Simulated Registers
+        # Simulated Registers (Memory Map)
         self.registers = {
-            "STATUS_REG": 0x00,      # 0: OK, 1: Sync Error, 2: Demod Error
-            "CONFIG_SYNC_WIN": 64,   # Default Window Size
-            "CONFIG_MOD_TYPE": 1,    # 0: QPSK, 1: 16QAM
-            "CONFIG_HO_THR": 10,     # Handover Threshold
-            "CONFIG_ACCUM": 0        # 0: Off, 1: On
+            # RO Registers
+            "ERR_STATUS_REG": 0x00,      # Bit[0]: Sync Loss, Bit[1]: CRC Error, Bit[2]: FIFO Overflow
+            "ERR_CONTEXT_REG": 0x00,     # Stores context (e.g., SCS, MCS, SNR)
+            
+            # RW Registers
+            "AGENT_CTRL_REG": 0x00,      # Bit[0]: Enable_AI, Bit[1]: Force_Reset
+            "PARAM_SHADOW_BANK": {},     # Dictionary to simulate shadow bank (addr -> val)
+            
+            # WO Registers
+            "UPDATE_TRIGGER": 0x00       # Write Magic Number to trigger update
         }
-        print("Hardware Interface Initialized.")
+        
+        # Internal State for Simulation
+        self.active_params = {
+            "SYNC_THRESH": 0.6,
+            "SCS": 30, # kHz
+            "MCS": 16, # QAM
+            "AGC_GAIN": 20 # dB
+        }
+        print("Hardware Interface Initialized (Table 5-1 Compliant).")
 
-    def read_status(self):
-        """
-        Reads the current error status from the hardware.
-        In reality, this would read a memory-mapped address.
-        """
-        status_code = self.registers["STATUS_REG"]
-        if status_code == 0:
-            return "STATUS_OK"
-        elif status_code == 1:
-            return "ERROR: Sync Timeout in NR Mode"
-        elif status_code == 2:
-            return "ERROR: High EVM in 16QAM Demodulation"
+    def read_csr(self, reg_name):
+        """Reads a CSR register."""
+        if reg_name in self.registers:
+            return self.registers[reg_name]
         else:
-            return "ERROR: Unknown"
+            print(f"[HW] Error: Read from unknown register {reg_name}")
+            return 0
 
-    def inject_error(self, error_type):
-        """
-        For simulation: Inject an error to test the system.
-        """
-        if error_type == "sync_fail":
-            self.registers["STATUS_REG"] = 1
-        elif error_type == "demod_fail":
-            self.registers["STATUS_REG"] = 2
-        print(f"\n[HW] Error Injected: {self.read_status()}")
-
-    def apply_fix(self, action_code):
-        """
-        Translates the RAG 'action_code' into register writes.
-        """
-        print(f"[HW] Applying Fix: {action_code}")
+    def write_csr(self, reg_name, value):
+        """Writes to a CSR register."""
+        if reg_name == "ERR_STATUS_REG":
+            # Write 1 to clear bits
+            self.registers["ERR_STATUS_REG"] &= ~value
+            print(f"[HW] ERR_STATUS_REG cleared with mask {bin(value)}")
         
-        actions = action_code.split(';')
-        for action in actions:
-            action = action.strip()
-            if action == "SET_SYNC_WINDOW_LARGE":
-                self.registers["CONFIG_SYNC_WIN"] = 256
-                print("  -> Register Write: CONFIG_SYNC_WIN = 256")
-            elif action == "ENABLE_ACCUMULATION":
-                self.registers["CONFIG_ACCUM"] = 1
-                print("  -> Register Write: CONFIG_ACCUM = 1")
-            elif action == "SWITCH_MOD_QPSK":
-                self.registers["CONFIG_MOD_TYPE"] = 0
-                print("  -> Register Write: CONFIG_MOD_TYPE = 0 (QPSK)")
-            elif action == "ENABLE_CFO_CORRECTION":
-                print("  -> Register Write: CFO_EN = 1")
+        elif reg_name == "UPDATE_TRIGGER":
+            if value == 0xA5A5: # Magic Number
+                print("[HW] Update Triggered! Loading Shadow Params to Active...")
+                self._load_shadow_to_active()
             else:
-                print(f"  -> Unknown Action: {action}")
+                print(f"[HW] Invalid Magic Number for Trigger: {hex(value)}")
         
-        # Clear Error after fix
-        self.registers["STATUS_REG"] = 0
-        print("[HW] Error Cleared. System Recovered.")
+        elif reg_name == "PARAM_SHADOW_BANK":
+             # This is a special case for simulation, usually address based
+             pass 
+             
+        elif reg_name in self.registers:
+            self.registers[reg_name] = value
+            print(f"[HW] Write {reg_name} = {hex(value)}")
+        else:
+            print(f"[HW] Error: Write to unknown register {reg_name}")
+
+    def write_shadow_param(self, addr, value):
+        """Simulates writing to the PARAM_SHADOW_BANK range."""
+        self.registers["PARAM_SHADOW_BANK"][addr] = value
+        print(f"[HW] Shadow Write: Addr {hex(addr)} = {value}")
+
+    def _load_shadow_to_active(self):
+        """Internal hardware logic to update active params from shadow."""
+        shadow = self.registers["PARAM_SHADOW_BANK"]
+        # Map addresses to internal params (Mock mapping)
+        if 0x10 in shadow:
+            self.active_params["SYNC_THRESH"] = shadow[0x10]
+            print(f"  -> Active SYNC_THRESH updated to {shadow[0x10]}")
+        if 0x14 in shadow:
+            self.active_params["SCS"] = shadow[0x14]
+            print(f"  -> Active SCS updated to {shadow[0x14]}")
+        if 0x18 in shadow:
+            self.active_params["AGC_GAIN"] = shadow[0x18]
+            print(f"  -> Active AGC_GAIN updated to {shadow[0x18]}")
+            
+        # Clear shadow after load? Or keep it? Usually keeps until overwrite.
+
+    def trigger_error(self, error_type, context_data):
+        """
+        Simulates the 'Perception' phase: Hardware detects error and latches context.
+        """
+        if error_type == "Sync_Loss":
+            self.registers["ERR_STATUS_REG"] |= (1 << 0)
+            print("\n[HW] INTERRUPT: Sync Loss Detected!")
+        elif error_type == "CRC_Error":
+            self.registers["ERR_STATUS_REG"] |= (1 << 1)
+            print("\n[HW] INTERRUPT: CRC Error Detected!")
+        
+        # Latch Context (Simplified: storing dict in reg for simulation)
+        self.registers["ERR_CONTEXT_REG"] = context_data
+        print(f"[HW] Context Latched: {context_data}")
+
+    def get_error_status(self):
+        return self.registers["ERR_STATUS_REG"]
+
+    def get_error_context(self):
+        return self.registers["ERR_CONTEXT_REG"]

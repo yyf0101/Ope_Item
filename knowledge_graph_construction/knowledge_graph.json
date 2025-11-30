@@ -1,0 +1,106 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "Protocol",
+      "standard_version": "Rel-15",
+      "frequency_band": "FR1",
+      "id": "5G_NR"
+    },
+    {
+      "label": "Protocol",
+      "value": "30kHz",
+      "symbol": "Delta f",
+      "id": "Subcarrier_Spacing"
+    },
+    {
+      "label": "Module",
+      "file_path": "/home/v-yifengye/Operator_Item/multi_standard_rx_project/rtl/multi_standard_rx.v",
+      "id": "multi_standard_rx"
+    },
+    {
+      "label": "Register",
+      "name": "mode_sel",
+      "access": "RO",
+      "id": "multi_standard_rx_mode_sel"
+    },
+    {
+      "label": "Module",
+      "file_path": "/home/v-yifengye/Operator_Item/multi_standard_rx_project/rtl/demapper.v",
+      "id": "demapper"
+    },
+    {
+      "label": "Module",
+      "file_path": "/home/v-yifengye/Operator_Item/multi_standard_rx_project/rtl/mode_ctrl.v",
+      "id": "mode_ctrl"
+    },
+    {
+      "label": "Register",
+      "name": "mode_sel",
+      "access": "RO",
+      "id": "mode_ctrl_mode_sel"
+    },
+    {
+      "label": "Module",
+      "file_path": "/home/v-yifengye/Operator_Item/multi_standard_rx_project/rtl/sync_detect.v",
+      "id": "sync_detect"
+    },
+    {
+      "label": "Error",
+      "severity": "High",
+      "symptom": "[Error] Sync lost at frame 1024, SNR=5dB",
+      "params": [
+        "1024",
+        "5"
+      ],
+      "id": "Sync_Loss"
+    },
+    {
+      "id": "PSS_Detection"
+    }
+  ],
+  "edges": [
+    {
+      "type": "depends_on",
+      "source": "5G_NR",
+      "target": "Subcarrier_Spacing"
+    },
+    {
+      "type": "configures",
+      "source": "multi_standard_rx_mode_sel",
+      "target": "multi_standard_rx"
+    },
+    {
+      "type": "submodule_of",
+      "source": "demapper",
+      "target": "multi_standard_rx"
+    },
+    {
+      "type": "submodule_of",
+      "source": "mode_ctrl",
+      "target": "multi_standard_rx"
+    },
+    {
+      "type": "configures",
+      "source": "mode_ctrl_mode_sel",
+      "target": "mode_ctrl"
+    },
+    {
+      "type": "submodule_of",
+      "source": "sync_detect",
+      "target": "multi_standard_rx"
+    },
+    {
+      "type": "implements",
+      "source": "sync_detect",
+      "target": "PSS_Detection"
+    },
+    {
+      "type": "causes",
+      "source": "sync_detect",
+      "target": "Sync_Loss"
+    }
+  ]
+}
