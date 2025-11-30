@@ -1,7 +1,11 @@
+import random
+import time
+
 class HardwareInterface:
     """
     Simulates the interface between the CPU (running RAG) and the FPGA/ASIC.
     Implements the CSR registers defined in Table 5-1.
+    Includes probabilistic behavior and noise for realistic simulation.
     """
     def __init__(self):
         # Simulated Registers (Memory Map)
@@ -25,7 +29,15 @@ class HardwareInterface:
             "MCS": 16, # QAM
             "AGC_GAIN": 20 # dB
         }
+        
+        # Environment State
+        self.env_snr = 20.0 # dB
+        
         print("Hardware Interface Initialized (Table 5-1 Compliant).")
+
+    def set_env_snr(self, snr):
+        self.env_snr = snr
+        print(f"[Env] Channel SNR set to {snr} dB")
 
     def read_csr(self, reg_name):
         """Reads a CSR register."""
@@ -78,7 +90,8 @@ class HardwareInterface:
             self.active_params["AGC_GAIN"] = shadow[0x18]
             print(f"  -> Active AGC_GAIN updated to {shadow[0x18]}")
             
-        # Clear shadow after load? Or keep it? Usually keeps until overwrite.
+        # Simulate hardware response time
+        time.sleep(0.01) 
 
     def trigger_error(self, error_type, context_data):
         """
@@ -91,12 +104,52 @@ class HardwareInterface:
             self.registers["ERR_STATUS_REG"] |= (1 << 1)
             print("\n[HW] INTERRUPT: CRC Error Detected!")
         
-        # Latch Context (Simplified: storing dict in reg for simulation)
-        self.registers["ERR_CONTEXT_REG"] = context_data
-        print(f"[HW] Context Latched: {context_data}")
+        # Add noise to context data (e.g. SNR estimation error)
+        noisy_context = context_data.copy()
+        if "SNR" in noisy_context:
+            noise = random.uniform(-1.0, 1.0)
+            noisy_context["SNR"] = round(noisy_context["SNR"] + noise, 1)
+            
+        # Latch Context
+        self.registers["ERR_CONTEXT_REG"] = noisy_context
+        print(f"[HW] Context Latched (with sensor noise): {noisy_context}")
 
     def get_error_status(self):
         return self.registers["ERR_STATUS_REG"]
 
     def get_error_context(self):
         return self.registers["ERR_CONTEXT_REG"]
+        
+    def check_system_health(self):
+        """
+        Simulates the physical layer check. 
+        Returns True if system is healthy (recovered), False if error persists.
+        """
+        # Logic: 
+        # 1. If SNR is too low (< -8dB), physics prevents recovery regardless of settings.
+        if self.env_snr < -8.0:
+            print(f"[Phy] SNR {self.env_snr}dB is too low. Link down.")
+            return False
+            
+        # 2. Check Sync Threshold vs SNR
+        # If SNR is low (< 0dB) and Threshold is high (> 0.5), Sync fails.
+        if self.env_snr < 0 and self.active_params["SYNC_THRESH"] > 0.5:
+            print("[Phy] Sync Threshold too high for current SNR. Sync Loss persists.")
+            self.registers["ERR_STATUS_REG"] |= (1 << 0) # Re-trigger error
+            return False
+            
+        # 3. Check SCS Mismatch (Assuming 5G NR requires 30kHz)
+        if self.active_params["SCS"] != 30:
+             print("[Phy] SCS Mismatch (Active=15kHz, Required=30kHz). Sync Loss persists.")
+             self.registers["ERR_STATUS_REG"] |= (1 << 0)
+             return False
+             
+        # 4. Check AGC Gain for CRC
+        # If SNR is low (< 0dB) and AGC Gain is low (< 25dB), CRC fails.
+        if self.env_snr < 0 and self.active_params["AGC_GAIN"] < 25:
+            print("[Phy] AGC Gain too low for signal. CRC Error persists.")
+            self.registers["ERR_STATUS_REG"] |= (1 << 1)
+            return False
+            
+        print("[Phy] System parameters match channel conditions. Link Stable.")
+        return True

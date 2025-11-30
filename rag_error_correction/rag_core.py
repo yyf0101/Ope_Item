@@ -1,5 +1,6 @@
 import json
 import math
+import random
 import networkx as nx
 from networkx.readwrite import json_graph
 
@@ -22,6 +23,9 @@ class GraphRAG:
         5.3.1 Hybrid Retrieval Strategy (Simplified for Demo)
         """
         print(f"[RAG] Retrieving context for ErrorCode: {error_code}...")
+        
+        # Simulate Retrieval Latency
+        # time.sleep(0.02)
         
         # 1. Identify Error Node
         error_node = None
@@ -111,8 +115,25 @@ JSON: {{"reason": "...", "actions": [{{"cmd": "WRITE", "addr": "0x...", "val": "
         Simulates the LLM decision (5.2.1 Decision Phase).
         In a real system, this calls Llama-3 or GPT-4.
         Here we use heuristics based on the prompt content to simulate intelligence.
+        Includes probabilistic 'Hallucinations' and 'Errors' for realism.
         """
         print("[AI] LLM Thinking...")
+        
+        # Simulate LLM Hallucination (5% chance)
+        if random.random() < 0.05:
+            print("[AI] (Simulated Hallucination) Generating invalid register address...")
+            return {
+                "reason": "I believe register 0x9999 controls the universe.",
+                "actions": [{"cmd": "WRITE", "addr": "0x9999", "val": 42}]
+            }
+
+        # Simulate Dangerous Action (5% chance)
+        if random.random() < 0.05:
+            print("[AI] (Simulated Unsafe Action) Suggesting global reset...")
+            return {
+                "reason": "System state unknown. Suggesting hard reset.",
+                "actions": [{"cmd": "RESET", "module": "GLOBAL_CLK_CTRL"}]
+            }
         
         # Heuristic 1: Sync Loss + High Threshold/Low SNR -> Lower Threshold
         if "Sync_Loss" in prompt and "SNR" in prompt:
@@ -163,12 +184,17 @@ JSON: {{"reason": "...", "actions": [{{"cmd": "WRITE", "addr": "0x...", "val": "
             if action["cmd"] == "WRITE":
                 addr = int(str(action["addr"]), 0) # Handle hex string
                 if addr not in valid_addresses:
-                    print(f"  [BLOCK] Illegal Address: {hex(addr)}")
+                    print(f"  [BLOCK] Illegal Address: {hex(addr)} (Hallucination Detected)")
                     continue
                 # Value check (simple)
                 if addr == 0x10 and (action["val"] > 1.0 or action["val"] < 0):
                      print(f"  [BLOCK] Invalid Threshold Value: {action['val']}")
                      continue
+            
+            elif action["cmd"] == "RESET":
+                if action["module"] == "GLOBAL_CLK_CTRL":
+                    print(f"  [BLOCK] Dangerous Action Intercepted: Reset {action['module']}")
+                    continue
                      
             valid_actions.append(action)
             

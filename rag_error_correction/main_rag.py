@@ -3,36 +3,52 @@ import os
 from hardware_bridge import HardwareInterface
 from rag_core import GraphRAG
 
-def run_scenario(scenario_name, hw, rag, error_type, context):
-    print(f"\n\n>>> Starting Scenario: {scenario_name} <<<")
+def run_complex_scenario(scenario_name, hw, rag, error_type, initial_context, env_snr):
+    print(f"\n\n>>> Starting Complex Scenario: {scenario_name} <<<")
+    print(f"    Environment SNR: {env_snr} dB")
+    
+    # Set Environment
+    hw.set_env_snr(env_snr)
     
     # 1. Perception (Observe)
-    hw.trigger_error(error_type, context)
+    hw.trigger_error(error_type, initial_context)
     
-    # Monitor Loop
-    status = hw.get_error_status()
-    if status != 0:
+    max_retries = 3
+    retry_count = 0
+    
+    while retry_count < max_retries:
+        print(f"\n--- Iteration {retry_count + 1} ---")
+        
+        # Monitor Loop
+        status = hw.get_error_status()
+        if status == 0:
+            print("[Agent] System Status OK. No action needed.")
+            break
+            
         # 2. Retrieval (Orient)
-        print("\n[Agent] Error Detected. Starting Retrieval...")
+        print("[Agent] Error Detected. Starting Retrieval...")
         ctx_data = hw.get_error_context()
         
         # Retrieve from Graph
         graph_context = rag.retrieve_context(status, ctx_data)
         
         # 3. Decision (Decide)
-        print("\n[Agent] Generating Prompt & Querying LLM...")
+        print("[Agent] Generating Prompt & Querying LLM...")
         error_node_name = error_type # Simplified mapping
         prompt = rag.generate_prompt(error_node_name, graph_context, ctx_data)
-        
-        # print(f"--- Prompt Preview ---\n{prompt[:200]}...\n--------------------")
         
         decision = rag.mock_llm_inference(prompt)
         print(f"[Agent] LLM Decision: {decision['reason']}")
         
         # 4. Execution (Act)
-        print("\n[Agent] Validating and Executing Actions...")
+        print("[Agent] Validating and Executing Actions...")
         valid_actions = rag.validate_actions(decision)
         
+        if not valid_actions:
+            print("[Agent] No valid actions generated (blocked by filter or empty). Retrying...")
+            retry_count += 1
+            continue
+
         for action in valid_actions:
             if action["cmd"] == "WRITE":
                 # Handle hex string or int
@@ -48,13 +64,23 @@ def run_scenario(scenario_name, hw, rag, error_type, context):
             elif action["cmd"] == "RESET":
                 print(f"[Agent] Resetting Module: {action['module']}")
         
-        # Verify Fix
-        # In simulation, we assume if actions were taken, error clears
-        if len(valid_actions) > 0:
-            hw.write_csr("ERR_STATUS_REG", status) # Clear bits
-            print("\n[Agent] Fix Applied. Error Status Cleared.")
+        # 5. Verification (Wait & Check)
+        print("[Agent] Waiting for hardware convergence...")
+        time.sleep(0.1) # Wait for physics
+        
+        # Check if fix worked (Physical Layer Check)
+        is_healthy = hw.check_system_health()
+        
+        if is_healthy:
+            hw.write_csr("ERR_STATUS_REG", status) # Clear bits manually if healthy
+            print("\n[Agent] SUCCESS: System Recovered and Stable.")
+            break
         else:
-            print("\n[Agent] No valid actions to apply.")
+            print("\n[Agent] FAILURE: Error persists after fix.")
+            retry_count += 1
+            
+    if retry_count == max_retries:
+        print("\n[Agent] CRITICAL: Max retries reached. Escalating to human operator.")
 
 def main():
     # Path to the KG JSON generated in Chapter 4
@@ -67,15 +93,20 @@ def main():
     hw = HardwareInterface()
     rag = GraphRAG(kg_path)
 
-    # --- Experiment 1: Sync Parameter Mismatch ---
-    # Context: SCS configured to 15kHz, but should be 30kHz for 5G NR
+    # --- Experiment 1: Sync Parameter Mismatch (Ideal Condition) ---
+    # Should succeed easily
     context_1 = {"SCS": 15, "Protocol": "5G_NR", "SNR": 20} 
-    run_scenario("Sync Parameter Mismatch", hw, rag, "Sync_Loss", context_1)
+    run_complex_scenario("Sync Parameter Mismatch (Ideal)", hw, rag, "Sync_Loss", context_1, env_snr=20)
 
-    # --- Experiment 2: SNR Sudden Drop ---
-    # Context: SNR drops to -5dB, causing CRC errors
-    context_2 = {"SCS": 30, "Protocol": "5G_NR", "SNR": -5}
-    run_scenario("SNR Sudden Drop", hw, rag, "CRC_Error", context_2)
+    # --- Experiment 2: SNR Sudden Drop (Recoverable) ---
+    # Should succeed after adjustment
+    context_2 = {"SCS": 30, "Protocol": "5G_NR", "SNR": -2}
+    run_complex_scenario("SNR Sudden Drop (Recoverable)", hw, rag, "CRC_Error", context_2, env_snr=-2)
+
+    # --- Experiment 3: Extreme Conditions (Unrecoverable) ---
+    # Should fail gracefully without crashing
+    context_3 = {"SCS": 30, "Protocol": "5G_NR", "SNR": -12}
+    run_complex_scenario("Extreme Deep Fading (Unrecoverable)", hw, rag, "CRC_Error", context_3, env_snr=-12)
 
 if __name__ == "__main__":
     main()
