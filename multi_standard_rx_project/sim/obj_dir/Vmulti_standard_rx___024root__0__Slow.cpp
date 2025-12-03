@@ -44,7 +44,7 @@ VL_ATTR_COLD void Vmulti_standard_rx___024root___eval_settle(Vmulti_standard_rx_
 #ifdef VL_DEBUG
             Vmulti_standard_rx___024root___dump_triggers__stl(vlSelfRef.__VstlTriggered, "stl"s);
 #endif
-            VL_FATAL_MT("../rtl/../rtl/multi_standard_rx.v", 2, "", "Settle region did not converge after 100 tries");
+            VL_FATAL_MT("../rtl/multi_standard_rx.v", 2, "", "Settle region did not converge after 100 tries");
         }
         __VstlIterCount = ((IData)(1U) + __VstlIterCount);
     } while (Vmulti_standard_rx___024root___eval_phase__stl(vlSelf));

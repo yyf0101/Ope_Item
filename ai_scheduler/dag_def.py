@@ -1,19 +1,21 @@
 from enum import Enum
 from dataclasses import dataclass, field
-from typing import List, Dict, Set
+from typing import List, Dict, Set, Optional
 
 class OpType(Enum):
     SYNC = "Sync"
     COMBINE = "Combine"
     DEMAP = "Demap"
-    FFT = "FFT" # Adding FFT for completeness, though maybe not used in the simplified flow
+    FFT = "FFT"
+    RECONFIG = "Reconfig" # Virtual Op for reconfiguration
 
 @dataclass
 class TaskNode:
     id: int
     name: str
     op_type: OpType
-    cycles: int  # Estimated hardware cycles
+    cycles: int
+    protocol: str = "Common" # "LTE", "NR", "WiFi"
     parents: List['TaskNode'] = field(default_factory=list)
     children: List['TaskNode'] = field(default_factory=list)
 
@@ -22,24 +24,29 @@ class TaskNode:
         child_node.parents.append(self)
 
     def __repr__(self):
-        return f"{self.name}({self.op_type.value}, {self.cycles}cyc)"
+        return f"{self.name}({self.op_type.value}, {self.protocol}, {self.cycles}cyc)"
 
-def create_mimo_rx_dag(num_antennas=4):
+def create_mimo_rx_dag(protocol="LTE", num_antennas=4, start_id=0):
     """
     Creates a DAG for a MIMO Receiver.
     Flow: [Sync x N] -> [Combine] -> [Demap x N]
     """
     tasks = []
-    task_id_counter = 0
+    task_id_counter = start_id
+
+    # Protocol specific parameters
+    sync_cycles = 100 if protocol == "LTE" else 120 # NR might be more complex
+    demap_cycles = 50 if protocol == "LTE" else 80
 
     # 1. Sync Nodes (One per antenna)
     sync_nodes = []
     for i in range(num_antennas):
         node = TaskNode(
             id=task_id_counter,
-            name=f"Sync_Ant{i}",
+            name=f"{protocol}_Sync_Ant{i}",
             op_type=OpType.SYNC,
-            cycles=100 # Example: Sync takes 100 cycles
+            cycles=sync_cycles,
+            protocol=protocol
         )
         sync_nodes.append(node)
         tasks.append(node)
@@ -48,9 +55,10 @@ def create_mimo_rx_dag(num_antennas=4):
     # 2. Combine Node (Depends on all Syncs)
     combine_node = TaskNode(
         id=task_id_counter,
-        name="MIMO_Combine",
+        name=f"{protocol}_MIMO_Combine",
         op_type=OpType.COMBINE,
-        cycles=20 # Combine is faster
+        cycles=20,
+        protocol=protocol
     )
     task_id_counter += 1
     tasks.append(combine_node)
@@ -59,15 +67,14 @@ def create_mimo_rx_dag(num_antennas=4):
         sync_node.add_child(combine_node)
 
     # 3. Demap Nodes (One per antenna, depends on Combine)
-    # In reality, Demap might depend on the specific stream, but let's assume
-    # the combiner outputs parameters needed for all demaps.
     demap_nodes = []
     for i in range(num_antennas):
         node = TaskNode(
             id=task_id_counter,
-            name=f"Demap_Ant{i}",
+            name=f"{protocol}_Demap_Ant{i}",
             op_type=OpType.DEMAP,
-            cycles=50 # Demap takes 50 cycles
+            cycles=demap_cycles,
+            protocol=protocol
         )
         demap_nodes.append(node)
         tasks.append(node)
@@ -76,4 +83,5 @@ def create_mimo_rx_dag(num_antennas=4):
     for demap_node in demap_nodes:
         combine_node.add_child(demap_node)
 
-    return tasks
+    return tasks, task_id_counter
+

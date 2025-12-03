@@ -76,7 +76,7 @@ class GraphRAG:
             
         return context_info
 
-    def generate_prompt(self, error_node, context_info, runtime_context):
+    def generate_prompt(self, error_node, context_info, runtime_context, error_desc=""):
         """
         5.3.2 Structured Prompt Engineering
         """
@@ -97,6 +97,7 @@ class GraphRAG:
 
 [Runtime State]
 Error: {error_node}
+Description: {error_desc}
 Context: {runtime_context}
 
 [Reasoning Chain]
@@ -135,7 +136,18 @@ JSON: {{"reason": "...", "actions": [{{"cmd": "WRITE", "addr": "0x...", "val": "
                 "actions": [{"cmd": "RESET", "module": "GLOBAL_CLK_CTRL"}]
             }
         
-        # Heuristic 1: Sync Loss + High Threshold/Low SNR -> Lower Threshold
+        # Heuristic 1: Sync Loss + SCS Mismatch -> Fix SCS (Prioritized)
+        if "Sync_Loss" in prompt and ("SCS Mismatch" in prompt or ("SCS" in prompt and "Required=30" in prompt)):
+            # If context says SCS=15 but Protocol says 30 (implied logic)
+            return {
+                "reason": "Sync Loss detected. Runtime SCS is 15kHz, but 5G NR FR1 standard (from Graph) requires 30kHz. Correcting SCS configuration.",
+                "actions": [
+                    {"cmd": "WRITE", "addr": "0x14", "val": 30}, # 0x14 is SCS address (mock)
+                    {"cmd": "WRITE", "addr": "0x50", "val": 0xA5A5}
+                ]
+            }
+
+        # Heuristic 2: Sync Loss + High Threshold/Low SNR -> Lower Threshold
         if "Sync_Loss" in prompt and "SNR" in prompt:
             # Parse SNR from prompt (simulated)
             # Assuming prompt contains "SNR=..."
@@ -144,17 +156,6 @@ JSON: {{"reason": "...", "actions": [{{"cmd": "WRITE", "addr": "0x...", "val": "
                 "actions": [
                     {"cmd": "WRITE", "addr": "0x10", "val": 0.3}, # 0x10 is SYNC_THRESH address (mock)
                     {"cmd": "WRITE", "addr": "0x50", "val": 0xA5A5} # Trigger Update
-                ]
-            }
-        
-        # Heuristic 2: Sync Loss + SCS Mismatch -> Fix SCS
-        if "Sync_Loss" in prompt and "SCS" in prompt:
-            # If context says SCS=15 but Protocol says 30 (implied logic)
-            return {
-                "reason": "Sync Loss detected. Runtime SCS is 15kHz, but 5G NR FR1 standard (from Graph) requires 30kHz. Correcting SCS configuration.",
-                "actions": [
-                    {"cmd": "WRITE", "addr": "0x14", "val": 30}, # 0x14 is SCS address (mock)
-                    {"cmd": "WRITE", "addr": "0x50", "val": 0xA5A5}
                 ]
             }
 
