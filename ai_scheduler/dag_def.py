@@ -85,3 +85,50 @@ def create_mimo_rx_dag(protocol="LTE", num_antennas=4, start_id=0):
 
     return tasks, task_id_counter
 
+def create_gap_scenario_dag(start_id=0):
+    """
+    Creates a specific scenario to trick greedy algorithms (DLS/HEFT).
+    Scenario:
+    - Resource is in LTE mode.
+    - An NR task is ready immediately.
+    - An LTE task becomes ready slightly later.
+    - Greedy algo will switch to NR immediately (incurring penalty).
+    - Optimal algo will wait for LTE task (avoiding penalty), then switch.
+    """
+    tasks = []
+    curr_id = start_id
+    
+    # 1. Setup Task (Sets resource to LTE)
+    setup_lte = TaskNode(id=curr_id, name="Setup_LTE", op_type=OpType.FFT, cycles=10, protocol="LTE")
+    tasks.append(setup_lte)
+    curr_id += 1
+    
+    # 2. Timer Task (Delays the Future LTE task)
+    # Runs on a different resource (SYNC) so it doesn't block FFT
+    timer = TaskNode(id=curr_id, name="Timer_Delay", op_type=OpType.SYNC, cycles=15, protocol="Common")
+    tasks.append(timer)
+    curr_id += 1
+    
+    # 3. Urgent NR Task (Ready after Setup)
+    urgent_nr = TaskNode(id=curr_id, name="Urgent_NR", op_type=OpType.FFT, cycles=10, protocol="NR")
+    setup_lte.add_child(urgent_nr)
+    tasks.append(urgent_nr)
+    curr_id += 1
+    
+    # 3b. Urgent Tail (Increases Static Level of Urgent Path)
+    # This tricks DLS into thinking Urgent path is critical, ignoring the switch cost
+    urgent_tail = TaskNode(id=curr_id, name="Urgent_Tail", op_type=OpType.FFT, cycles=50, protocol="NR")
+    urgent_nr.add_child(urgent_tail)
+    tasks.append(urgent_tail)
+    curr_id += 1
+    
+    # 4. Future LTE Task (Ready after Timer)
+    future_lte = TaskNode(id=curr_id, name="Future_LTE", op_type=OpType.FFT, cycles=10, protocol="LTE")
+    timer.add_child(future_lte)
+    # Also depends on Setup to ensure logical consistency, though Timer is the bottleneck
+    setup_lte.add_child(future_lte) 
+    tasks.append(future_lte)
+    curr_id += 1
+    
+    return tasks, curr_id
+
