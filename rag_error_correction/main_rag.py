@@ -15,6 +15,7 @@ def run_complex_scenario(scenario_name, hw, rag, error_type, initial_context, en
     
     max_retries = 3
     retry_count = 0
+    history = [] # Track history for Agentic RAG
     
     while retry_count < max_retries:
         print(f"\n--- Iteration {retry_count + 1} ---")
@@ -35,7 +36,9 @@ def run_complex_scenario(scenario_name, hw, rag, error_type, initial_context, en
         # 3. Decision (Decide)
         print("[Agent] Generating Prompt & Querying LLM...")
         error_node_name = error_type # Simplified mapping
-        prompt = rag.generate_prompt(error_node_name, graph_context, ctx_data)
+        
+        # Pass history to prompt generator
+        prompt = rag.generate_prompt(error_node_name, graph_context, ctx_data, history=history)
         
         decision = rag.mock_llm_inference(prompt)
         print(f"[Agent] LLM Decision: {decision['reason']}")
@@ -44,8 +47,16 @@ def run_complex_scenario(scenario_name, hw, rag, error_type, initial_context, en
         print("[Agent] Validating and Executing Actions...")
         valid_actions = rag.validate_actions(decision)
         
+        # Record attempt for history
+        attempt_record = {
+            "action": str(valid_actions),
+            "result": "Pending"
+        }
+        
         if not valid_actions:
             print("[Agent] No valid actions generated (blocked by filter or empty). Retrying...")
+            attempt_record["result"] = "Invalid Action"
+            history.append(attempt_record)
             retry_count += 1
             continue
 
@@ -74,9 +85,13 @@ def run_complex_scenario(scenario_name, hw, rag, error_type, initial_context, en
         if is_healthy:
             hw.write_csr("ERR_STATUS_REG", status) # Clear bits manually if healthy
             print("\n[Agent] SUCCESS: System Recovered and Stable.")
+            attempt_record["result"] = "Success"
+            history.append(attempt_record)
             break
         else:
             print("\n[Agent] FAILURE: Error persists after fix.")
+            attempt_record["result"] = "Failed"
+            history.append(attempt_record)
             retry_count += 1
             
     if retry_count == max_retries:

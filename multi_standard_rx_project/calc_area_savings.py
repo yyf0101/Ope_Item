@@ -89,5 +89,27 @@ def calculate_area_savings():
     print("   we allocate one buffer of size 4096 and reuse it.")
     print("3. This represents a significant reduction in silicon cost.")
 
+    # Generate Plot Data for Thesis
+    import matplotlib.pyplot as plt
+    import os
+
+    labels = ['Baseline (Separate)', 'Proposed (Multiplexed)']
+    values = [total_baseline_area, total_mux_area]
+    
+    plt.figure(figsize=(8, 6))
+    plt.bar(labels, values, color=['gray', 'green'], width=0.5)
+    plt.ylabel('Area Cost (Gate Equivalents)')
+    plt.title('Area Savings Analysis: Multi-Standard Receiver')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    
+    # Add text labels
+    for i, v in enumerate(values):
+        plt.text(i, v, f"{v:,.0f} GE", ha='center', va='bottom')
+        
+    output_dir = "../thesis_figures"
+    os.makedirs(output_dir, exist_ok=True)
+    plt.savefig(os.path.join(output_dir, "area_savings.png"))
+    print(f"Saved area plot to {output_dir}/area_savings.png")
+
 if __name__ == "__main__":
     calculate_area_savings()

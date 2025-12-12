@@ -30,6 +30,7 @@ def create_mimo_rx_dag(protocol="LTE", num_antennas=4, start_id=0):
     """
     Creates a DAG for a MIMO Receiver.
     Flow: [Sync x N] -> [Combine] -> [Demap x N]
+    Returns: (tasks, next_start_id)
     """
     tasks = []
     task_id_counter = start_id

@@ -76,9 +76,10 @@ class GraphRAG:
             
         return context_info
 
-    def generate_prompt(self, error_node, context_info, runtime_context, error_desc=""):
+    def generate_prompt(self, error_node, context_info, runtime_context, error_desc="", history=None):
         """
         5.3.2 Structured Prompt Engineering
+        Supports multi-turn history for Agentic RAG.
         """
         # Serialize Graph Context
         graph_text = ""
@@ -87,6 +88,12 @@ class GraphRAG:
             graph_text += f"Node: {item['id']} ({item['type']}) [{props_str}]\n"
             for rel in item['relations']:
                 graph_text += f"  {rel}\n"
+
+        history_text = ""
+        if history:
+            history_text = "\n[Previous Attempts]\n"
+            for i, attempt in enumerate(history):
+                history_text += f"Attempt {i+1}: {attempt['action']} -> Result: {attempt['result']}\n"
 
         prompt = f"""
 [Role] You are an expert in FPGA-based communication systems.
@@ -98,6 +105,7 @@ class GraphRAG:
 [Runtime State]
 Error: {error_node}
 Description: {error_desc}
+{history_text}
 Context: {runtime_context}
 
 [Reasoning Chain]
