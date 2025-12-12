@@ -1,4 +1,5 @@
 import os
+import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import matplotlib.patches as mpatches
@@ -338,9 +339,50 @@ def draw_algorithm_performance_comparison():
     plt.tight_layout()
     save_figure('fig3_5_algo_performance.png')
 
+def draw_graph_quality_evaluation():
+    # Data
+    methods = ['AST-based (Code)', 'NLP-based (Doc)', 'Multimodal Fusion']
+    metrics = ['Entity Alignment Accuracy (EAA)', 'Relation Coverage (RC)']
+    
+    # Values
+    eaa_scores = [100.0, 92.3, 96.5]
+    rc_scores = [98.5, 81.5, 97.0]
+    
+    x = np.arange(len(methods))
+    width = 0.35
+    
+    fig, ax = plt.subplots(figsize=(10, 6))
+    
+    rects1 = ax.bar(x - width/2, eaa_scores, width, label='EAA (%)', color='#4A90E2', edgecolor='black', zorder=3)
+    rects2 = ax.bar(x + width/2, rc_scores, width, label='RC (%)', color='#E74C3C', edgecolor='black', zorder=3)
+    
+    ax.set_ylabel('Percentage (%)', fontsize=12, fontweight='bold')
+    ax.set_title('Fig 4-3. Knowledge Graph Quality Evaluation', fontsize=14, fontweight='bold', y=1.02)
+    ax.set_xticks(x)
+    ax.set_xticklabels(methods, fontsize=11)
+    ax.set_ylim(0, 115)
+    ax.legend(loc='upper right', fontsize=10)
+    ax.grid(axis='y', linestyle='--', alpha=0.7, zorder=0)
+    
+    def autolabel(rects):
+        for rect in rects:
+            height = rect.get_height()
+            ax.annotate(f'{height}%',
+                        xy=(rect.get_x() + rect.get_width() / 2, height),
+                        xytext=(0, 3),  # 3 points vertical offset
+                        textcoords="offset points",
+                        ha='center', va='bottom', fontsize=10, fontweight='bold')
+
+    autolabel(rects1)
+    autolabel(rects2)
+    
+    plt.tight_layout()
+    save_figure('fig4_3_graph_quality.png')
+
 if __name__ == "__main__":
     draw_operator_extraction()
     draw_hardware_architecture()
     draw_gantt_chart()
     draw_recursive_window()
     draw_algorithm_performance_comparison()
+    draw_graph_quality_evaluation()
