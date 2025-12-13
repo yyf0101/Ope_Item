@@ -30,6 +30,23 @@ class Error(Entity):
 class Solution(Entity):
     label: str = "Solution"
 
+# --- New Entities for CGRA & Mode Switch ---
+
+@dataclass
+class CGRA_Unit(Entity):
+    label: str = "CGRA_Unit"
+    description: str = "Coarse-Grained Reconfigurable Architecture Unit"
+
+@dataclass
+class ShadowRegister(Entity):
+    label: str = "ShadowRegister"
+    description: str = "Double buffering mechanism for atomic updates"
+
+@dataclass
+class ModeSwitch(Entity):
+    label: str = "ModeSwitch"
+    description: str = "Transition process between protocols (e.g., LTE to NR)"
+
 # --- Relationship Types ---
 
 class RelationType(Enum):
@@ -40,6 +57,10 @@ class RelationType(Enum):
     CAUSES = "causes"
     FIXES = "fixes"
     DEPENDS_ON = "depends_on"
+    # New Relations
+    SHADOWS = "shadows" # ShadowRegister -> PhysicalRegister
+    TRIGGERS = "triggers" # ModeSwitch -> Signal
+    MAPPED_TO = "mapped_to" # Operator -> CGRA_Unit
 
 @dataclass
 class Relationship:

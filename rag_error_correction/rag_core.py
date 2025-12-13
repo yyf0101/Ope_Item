@@ -13,15 +13,51 @@ class GraphRAG:
         print(f"GraphRAG Initialized. Loaded {len(self.graph.nodes)} nodes.")
 
     def _load_graph(self, path):
+        print(f"Loading graph from: {path}")
         with open(path, 'r') as f:
             data = json.load(f)
+        print(f"Data type: {type(data)}")
         # Handle both node-link formats if necessary, assuming standard format here
         return json_graph.node_link_graph(data)
+
+    # --- New: Pipeline Classification ---
+    def pipeline_classification(self, error_code):
+        """
+        Optimization: Classify error level to reduce search space.
+        Level 1: PHY (Sync, SNR)
+        Level 2: MAC (CRC, Schedule)
+        Level 3: SYS (Mode Switch, DMA)
+        """
+        if error_code & 0xF0: # High bits -> System Error
+            return "SYS"
+        elif error_code & 0x0C: # Mid bits -> MAC Error
+            return "MAC"
+        else:
+            return "PHY"
+
+    # --- New: Graph Quality Metrics ---
+    def evaluate_graph_quality(self):
+        """
+        Optimization: Evaluate graph quality metrics.
+        """
+        if not self.graph or len(self.graph) == 0:
+            print("[Metrics] Graph is empty.")
+            return {"density": 0, "avg_degree": 0}
+            
+        density = nx.density(self.graph)
+        avg_degree = sum(dict(self.graph.degree()).values()) / len(self.graph)
+        print(f"[Metrics] Graph Density: {density:.4f}")
+        print(f"[Metrics] Avg Degree: {avg_degree:.2f}")
+        return {"density": density, "avg_degree": avg_degree}
 
     def retrieve_context(self, error_code, context_data):
         """
         5.3.1 Hybrid Retrieval Strategy (Simplified for Demo)
         """
+        # 1. Pre-processing: Pipeline Classification
+        error_level = self.pipeline_classification(error_code)
+        print(f"[RAG] Error Level Classified: {error_level}")
+
         print(f"[RAG] Retrieving context for ErrorCode: {error_code}...")
         
         # Simulate Retrieval Latency

@@ -1,34 +1,5914 @@
-[
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
     {
-        "id": "ERR_001",
-        "error_signature": "Sync Timeout: PSS not found in NR mode",
-        "context": "5G NR, Initial Access, Low SNR",
-        "3gpp_ref": "TS 38.213 Section 4.1",
-        "solution_text": "Increase the synchronization search window size and enable accumulation over multiple frames.",
-        "action_code": "SET_SYNC_WINDOW_LARGE; ENABLE_ACCUMULATION"
+      "label": "Protocol",
+      "id": "LTE"
     },
     {
-        "id": "ERR_002",
-        "error_signature": "Demodulation Error: EVM too high in 16QAM",
-        "context": "5G NR, Data Channel, High Doppler",
-        "3gpp_ref": "TS 38.101 Section 6.5",
-        "solution_text": "Switch to a more robust Modulation and Coding Scheme (MCS) or enable frequency offset correction.",
-        "action_code": "SWITCH_MOD_QPSK; ENABLE_CFO_CORRECTION"
+      "label": "Protocol",
+      "id": "5G_NR"
     },
     {
-        "id": "ERR_003",
-        "error_signature": "Handover Failure: Target cell signal weak",
-        "context": "LTE to NR Handover",
-        "3gpp_ref": "TS 36.331 Section 5.3.5",
-        "solution_text": "Trigger measurement report earlier or lower the handover threshold (A3 event).",
-        "action_code": "LOWER_HO_THRESHOLD_3DB"
+      "label": "Protocol",
+      "id": "WiFi_6"
     },
     {
-        "id": "ERR_004",
-        "error_signature": "WiFi Preamble Detection Fluctuation",
-        "context": "WiFi 6, CSMA/CA",
-        "3gpp_ref": "N/A (IEEE 802.11ax)",
-        "solution_text": "Adjust CCA (Clear Channel Assessment) threshold to avoid false alarms.",
-        "action_code": "ADJUST_CCA_THRESHOLD_UP"
+      "label": "Protocol",
+      "id": "NB-IoT"
+    },
+    {
+      "label": "Protocol",
+      "id": "ZigBee"
+    },
+    {
+      "label": "Module",
+      "id": "Sync_Unit"
+    },
+    {
+      "label": "Module",
+      "id": "Demodulator"
+    },
+    {
+      "label": "Module",
+      "id": "Decoder"
+    },
+    {
+      "label": "Module",
+      "id": "Scheduler"
+    },
+    {
+      "label": "Module",
+      "id": "DMA_Controller"
+    },
+    {
+      "label": "Module",
+      "id": "RF_FrontEnd"
+    },
+    {
+      "label": "Module",
+      "id": "FFT_Engine"
+    },
+    {
+      "label": "Module",
+      "id": "Scrambler"
+    },
+    {
+      "label": "Module",
+      "id": "Interleaver"
+    },
+    {
+      "label": "Module",
+      "id": "Rate_Matcher"
+    },
+    {
+      "label": "Module",
+      "id": "CRC_Checker"
+    },
+    {
+      "label": "Module",
+      "id": "L1_Controller"
+    },
+    {
+      "label": "Module",
+      "id": "MAC_Filter"
+    },
+    {
+      "label": "Module",
+      "id": "RRC_Manager"
+    },
+    {
+      "label": "Module",
+      "id": "Beam_Forming_Unit"
+    },
+    {
+      "label": "Condition",
+      "id": "Low_SNR"
+    },
+    {
+      "label": "Condition",
+      "id": "High_Doppler"
+    },
+    {
+      "label": "Condition",
+      "id": "Interference"
+    },
+    {
+      "label": "Condition",
+      "id": "Buffer_Overflow"
+    },
+    {
+      "label": "Condition",
+      "id": "Clock_Jitter"
+    },
+    {
+      "label": "Condition",
+      "id": "Temperature_High"
+    },
+    {
+      "label": "Condition",
+      "id": "Voltage_Drop"
+    },
+    {
+      "label": "Condition",
+      "id": "Multi_Path_Fading"
+    },
+    {
+      "label": "Condition",
+      "id": "Shadowing"
+    },
+    {
+      "label": "Condition",
+      "id": "Packet_Loss_Burst"
+    },
+    {
+      "label": "Condition",
+      "id": "Channel_Congestion"
+    },
+    {
+      "label": "Condition",
+      "id": "Neighbor_Cell_Interference"
+    },
+    {
+      "label": "Register",
+      "address": "0x3E8",
+      "id": "REG_0x3E8"
+    },
+    {
+      "label": "Register",
+      "address": "0x3E9",
+      "id": "REG_0x3E9"
+    },
+    {
+      "label": "Register",
+      "address": "0x3EA",
+      "id": "REG_0x3EA"
+    },
+    {
+      "label": "Register",
+      "address": "0x3EB",
+      "id": "REG_0x3EB"
+    },
+    {
+      "label": "Register",
+      "address": "0x3EC",
+      "id": "REG_0x3EC"
+    },
+    {
+      "label": "Register",
+      "address": "0x3ED",
+      "id": "REG_0x3ED"
+    },
+    {
+      "label": "Register",
+      "address": "0x3EE",
+      "id": "REG_0x3EE"
+    },
+    {
+      "label": "Register",
+      "address": "0x3EF",
+      "id": "REG_0x3EF"
+    },
+    {
+      "label": "Register",
+      "address": "0x3F0",
+      "id": "REG_0x3F0"
+    },
+    {
+      "label": "Register",
+      "address": "0x3F1",
+      "id": "REG_0x3F1"
+    },
+    {
+      "label": "Register",
+      "address": "0x3F2",
+      "id": "REG_0x3F2"
+    },
+    {
+      "label": "Register",
+      "address": "0x3F3",
+      "id": "REG_0x3F3"
+    },
+    {
+      "label": "Register",
+      "address": "0x3F4",
+      "id": "REG_0x3F4"
+    },
+    {
+      "label": "Register",
+      "address": "0x3F5",
+      "id": "REG_0x3F5"
+    },
+    {
+      "label": "Register",
+      "address": "0x3F6",
+      "id": "REG_0x3F6"
+    },
+    {
+      "label": "Register",
+      "address": "0x3F7",
+      "id": "REG_0x3F7"
+    },
+    {
+      "label": "Register",
+      "address": "0x3F8",
+      "id": "REG_0x3F8"
+    },
+    {
+      "label": "Register",
+      "address": "0x3F9",
+      "id": "REG_0x3F9"
+    },
+    {
+      "label": "Register",
+      "address": "0x3FA",
+      "id": "REG_0x3FA"
+    },
+    {
+      "label": "Register",
+      "address": "0x3FB",
+      "id": "REG_0x3FB"
+    },
+    {
+      "label": "Register",
+      "address": "0x3FC",
+      "id": "REG_0x3FC"
+    },
+    {
+      "label": "Register",
+      "address": "0x3FD",
+      "id": "REG_0x3FD"
+    },
+    {
+      "label": "Register",
+      "address": "0x3FE",
+      "id": "REG_0x3FE"
+    },
+    {
+      "label": "Register",
+      "address": "0x3FF",
+      "id": "REG_0x3FF"
+    },
+    {
+      "label": "Register",
+      "address": "0x400",
+      "id": "REG_0x400"
+    },
+    {
+      "label": "Register",
+      "address": "0x401",
+      "id": "REG_0x401"
+    },
+    {
+      "label": "Register",
+      "address": "0x402",
+      "id": "REG_0x402"
+    },
+    {
+      "label": "Register",
+      "address": "0x403",
+      "id": "REG_0x403"
+    },
+    {
+      "label": "Register",
+      "address": "0x404",
+      "id": "REG_0x404"
+    },
+    {
+      "label": "Register",
+      "address": "0x405",
+      "id": "REG_0x405"
+    },
+    {
+      "label": "Register",
+      "address": "0x406",
+      "id": "REG_0x406"
+    },
+    {
+      "label": "Register",
+      "address": "0x407",
+      "id": "REG_0x407"
+    },
+    {
+      "label": "Register",
+      "address": "0x408",
+      "id": "REG_0x408"
+    },
+    {
+      "label": "Register",
+      "address": "0x409",
+      "id": "REG_0x409"
+    },
+    {
+      "label": "Register",
+      "address": "0x40A",
+      "id": "REG_0x40A"
+    },
+    {
+      "label": "Register",
+      "address": "0x40B",
+      "id": "REG_0x40B"
+    },
+    {
+      "label": "Register",
+      "address": "0x40C",
+      "id": "REG_0x40C"
+    },
+    {
+      "label": "Register",
+      "address": "0x40D",
+      "id": "REG_0x40D"
+    },
+    {
+      "label": "Register",
+      "address": "0x40E",
+      "id": "REG_0x40E"
+    },
+    {
+      "label": "Register",
+      "address": "0x40F",
+      "id": "REG_0x40F"
+    },
+    {
+      "label": "Register",
+      "address": "0x410",
+      "id": "REG_0x410"
+    },
+    {
+      "label": "Register",
+      "address": "0x411",
+      "id": "REG_0x411"
+    },
+    {
+      "label": "Register",
+      "address": "0x412",
+      "id": "REG_0x412"
+    },
+    {
+      "label": "Register",
+      "address": "0x413",
+      "id": "REG_0x413"
+    },
+    {
+      "label": "Register",
+      "address": "0x414",
+      "id": "REG_0x414"
+    },
+    {
+      "label": "Register",
+      "address": "0x415",
+      "id": "REG_0x415"
+    },
+    {
+      "label": "Register",
+      "address": "0x416",
+      "id": "REG_0x416"
+    },
+    {
+      "label": "Register",
+      "address": "0x417",
+      "id": "REG_0x417"
+    },
+    {
+      "label": "Register",
+      "address": "0x418",
+      "id": "REG_0x418"
+    },
+    {
+      "label": "Register",
+      "address": "0x419",
+      "id": "REG_0x419"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "LTE_PSS_Miss"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "LTE_Adjust_Sync_Threshold_55"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "LTE_SSS_Detection_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "LTE_Reset_Sync_State_76"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "LTE_CFO_Drift"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "LTE_Widen_Search_Window_93"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "LTE_Timing_Offset"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "LTE_Widen_Search_Window_51"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "LTE_Frame_Sync_Lost"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "LTE_Reset_Sync_State_73"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "LTE_Symbol_Boundary_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "LTE_Switch_Beam_87"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "5G_NR_PSS_Miss"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "5G_NR_Widen_Search_Window_76"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "5G_NR_SSS_Detection_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "5G_NR_Adjust_Sync_Threshold_76"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "5G_NR_CFO_Drift"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "5G_NR_Adjust_Sync_Threshold_56"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "5G_NR_Timing_Offset"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "5G_NR_Reset_Sync_State_66"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "5G_NR_Frame_Sync_Lost"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "5G_NR_Reset_Sync_State_18"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "5G_NR_Symbol_Boundary_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "5G_NR_Switch_Beam_50"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "WiFi_6_PSS_Miss"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "WiFi_6_Widen_Search_Window_76"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "WiFi_6_SSS_Detection_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "WiFi_6_Adjust_Sync_Threshold_26"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "WiFi_6_CFO_Drift"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "WiFi_6_Reset_Sync_State_12"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "WiFi_6_Timing_Offset"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "WiFi_6_Widen_Search_Window_13"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "WiFi_6_Frame_Sync_Lost"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "WiFi_6_Widen_Search_Window_88"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "WiFi_6_Symbol_Boundary_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "WiFi_6_Adjust_Sync_Threshold_57"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "NB-IoT_PSS_Miss"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "NB-IoT_Switch_Beam_43"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "NB-IoT_SSS_Detection_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "NB-IoT_Reset_Sync_State_8"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "NB-IoT_CFO_Drift"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "NB-IoT_Widen_Search_Window_44"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "NB-IoT_Timing_Offset"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "NB-IoT_Switch_Beam_35"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "NB-IoT_Frame_Sync_Lost"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "NB-IoT_Reset_Sync_State_40"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "NB-IoT_Symbol_Boundary_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "NB-IoT_Enable_Freq_Tracking_3"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "ZigBee_PSS_Miss"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "ZigBee_Switch_Beam_25"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "ZigBee_SSS_Detection_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "ZigBee_Enable_Freq_Tracking_3"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "ZigBee_CFO_Drift"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "ZigBee_Enable_Freq_Tracking_84"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "ZigBee_Timing_Offset"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "ZigBee_Widen_Search_Window_39"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "ZigBee_Frame_Sync_Lost"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "ZigBee_Reset_Sync_State_100"
+    },
+    {
+      "label": "Error",
+      "layer": "PHY",
+      "id": "ZigBee_Symbol_Boundary_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Low",
+      "id": "ZigBee_Adjust_Sync_Threshold_70"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "LTE_Constellation_Mismatch"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "LTE_Request_Retransmission_8"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "LTE_EVM_High"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "LTE_Request_Retransmission_99"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "LTE_LDPC_Decode_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "LTE_Enable_Diversity_72"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "LTE_CRC_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "LTE_Enable_Diversity_36"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "LTE_Polar_Code_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "LTE_Lower_MCS_72"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "LTE_QAM_Demap_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "LTE_Lower_MCS_50"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "5G_NR_Constellation_Mismatch"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "5G_NR_Increase_Power_50"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "5G_NR_EVM_High"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "5G_NR_Increase_Power_59"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "5G_NR_LDPC_Decode_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "5G_NR_Request_Retransmission_11"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "5G_NR_CRC_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "5G_NR_Lower_MCS_20"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "5G_NR_Polar_Code_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "5G_NR_Request_Retransmission_87"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "5G_NR_QAM_Demap_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "5G_NR_Soft_Reset_Rx_65"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "WiFi_6_Constellation_Mismatch"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "WiFi_6_Increase_Power_7"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "WiFi_6_EVM_High"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "WiFi_6_Request_Retransmission_12"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "WiFi_6_LDPC_Decode_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "WiFi_6_Enable_Diversity_47"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "WiFi_6_CRC_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "WiFi_6_Increase_Power_63"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "WiFi_6_Polar_Code_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "WiFi_6_Request_Retransmission_55"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "WiFi_6_QAM_Demap_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "WiFi_6_Enable_Diversity_13"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "NB-IoT_Constellation_Mismatch"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "NB-IoT_Request_Retransmission_15"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "NB-IoT_EVM_High"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "NB-IoT_Enable_Diversity_93"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "NB-IoT_LDPC_Decode_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "NB-IoT_Enable_Diversity_51"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "NB-IoT_CRC_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "NB-IoT_Request_Retransmission_16"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "NB-IoT_Polar_Code_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "NB-IoT_Increase_Power_24"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "NB-IoT_QAM_Demap_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "NB-IoT_Request_Retransmission_21"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "ZigBee_Constellation_Mismatch"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "ZigBee_Increase_Power_12"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "ZigBee_EVM_High"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "ZigBee_Request_Retransmission_62"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "ZigBee_LDPC_Decode_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "ZigBee_Soft_Reset_Rx_74"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "ZigBee_CRC_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "ZigBee_Enable_Diversity_43"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "ZigBee_Polar_Code_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "ZigBee_Request_Retransmission_22"
+    },
+    {
+      "label": "Error",
+      "layer": "MAC",
+      "id": "ZigBee_QAM_Demap_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "Medium",
+      "id": "ZigBee_Enable_Diversity_88"
+    },
+    {
+      "label": "Error",
+      "layer": "SYS",
+      "id": "Context_Switch_Timeout"
+    },
+    {
+      "label": "Solution",
+      "cost": "High",
+      "id": "SOL_Force_Unlock_84"
+    },
+    {
+      "id": "ModeSwitch"
+    },
+    {
+      "label": "Error",
+      "layer": "SYS",
+      "id": "Shadow_Reg_Update_Fail"
+    },
+    {
+      "label": "Solution",
+      "cost": "High",
+      "id": "SOL_Clear_Shadow_Buffer_94"
+    },
+    {
+      "label": "Error",
+      "layer": "SYS",
+      "id": "DMA_Bus_Hang"
+    },
+    {
+      "label": "Solution",
+      "cost": "High",
+      "id": "SOL_Flush_Pipeline_34"
+    },
+    {
+      "label": "Error",
+      "layer": "SYS",
+      "id": "Watchdog_Reset"
+    },
+    {
+      "label": "Solution",
+      "cost": "High",
+      "id": "SOL_Force_Unlock_68"
+    },
+    {
+      "label": "Error",
+      "layer": "SYS",
+      "id": "Instruction_Fetch_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "High",
+      "id": "SOL_Flush_Pipeline_48"
+    },
+    {
+      "label": "Error",
+      "layer": "SYS",
+      "id": "Memory_Parity_Error"
+    },
+    {
+      "label": "Solution",
+      "cost": "High",
+      "id": "SOL_Clear_Shadow_Buffer_17"
+    },
+    {
+      "label": "Error",
+      "layer": "SYS",
+      "id": "AXI_Bus_Lockup"
+    },
+    {
+      "label": "Solution",
+      "cost": "High",
+      "id": "SOL_Clear_Shadow_Buffer_56"
+    },
+    {
+      "label": "Error",
+      "layer": "SYS",
+      "id": "FIFO_Underrun"
+    },
+    {
+      "label": "Solution",
+      "cost": "High",
+      "id": "SOL_Reset_CGRA_Tile_40"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 0 detected",
+      "id": "LOG_MSG_0000"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 1 detected",
+      "id": "LOG_MSG_0001"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 2 detected",
+      "id": "LOG_MSG_0002"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 3 detected",
+      "id": "LOG_MSG_0003"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 4 detected",
+      "id": "LOG_MSG_0004"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 5 detected",
+      "id": "LOG_MSG_0005"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 6 detected",
+      "id": "LOG_MSG_0006"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 7 detected",
+      "id": "LOG_MSG_0007"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 8 detected",
+      "id": "LOG_MSG_0008"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 9 detected",
+      "id": "LOG_MSG_0009"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 10 detected",
+      "id": "LOG_MSG_0010"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 11 detected",
+      "id": "LOG_MSG_0011"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 12 detected",
+      "id": "LOG_MSG_0012"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 13 detected",
+      "id": "LOG_MSG_0013"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 14 detected",
+      "id": "LOG_MSG_0014"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 15 detected",
+      "id": "LOG_MSG_0015"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 16 detected",
+      "id": "LOG_MSG_0016"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 17 detected",
+      "id": "LOG_MSG_0017"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 18 detected",
+      "id": "LOG_MSG_0018"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 19 detected",
+      "id": "LOG_MSG_0019"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 20 detected",
+      "id": "LOG_MSG_0020"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 21 detected",
+      "id": "LOG_MSG_0021"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 22 detected",
+      "id": "LOG_MSG_0022"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 23 detected",
+      "id": "LOG_MSG_0023"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 24 detected",
+      "id": "LOG_MSG_0024"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 25 detected",
+      "id": "LOG_MSG_0025"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 26 detected",
+      "id": "LOG_MSG_0026"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 27 detected",
+      "id": "LOG_MSG_0027"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 28 detected",
+      "id": "LOG_MSG_0028"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 29 detected",
+      "id": "LOG_MSG_0029"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 30 detected",
+      "id": "LOG_MSG_0030"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 31 detected",
+      "id": "LOG_MSG_0031"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 32 detected",
+      "id": "LOG_MSG_0032"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 33 detected",
+      "id": "LOG_MSG_0033"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 34 detected",
+      "id": "LOG_MSG_0034"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 35 detected",
+      "id": "LOG_MSG_0035"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 36 detected",
+      "id": "LOG_MSG_0036"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 37 detected",
+      "id": "LOG_MSG_0037"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 38 detected",
+      "id": "LOG_MSG_0038"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 39 detected",
+      "id": "LOG_MSG_0039"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 40 detected",
+      "id": "LOG_MSG_0040"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 41 detected",
+      "id": "LOG_MSG_0041"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 42 detected",
+      "id": "LOG_MSG_0042"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 43 detected",
+      "id": "LOG_MSG_0043"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 44 detected",
+      "id": "LOG_MSG_0044"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 45 detected",
+      "id": "LOG_MSG_0045"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 46 detected",
+      "id": "LOG_MSG_0046"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 47 detected",
+      "id": "LOG_MSG_0047"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 48 detected",
+      "id": "LOG_MSG_0048"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 49 detected",
+      "id": "LOG_MSG_0049"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 50 detected",
+      "id": "LOG_MSG_0050"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 51 detected",
+      "id": "LOG_MSG_0051"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 52 detected",
+      "id": "LOG_MSG_0052"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 53 detected",
+      "id": "LOG_MSG_0053"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 54 detected",
+      "id": "LOG_MSG_0054"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 55 detected",
+      "id": "LOG_MSG_0055"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 56 detected",
+      "id": "LOG_MSG_0056"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 57 detected",
+      "id": "LOG_MSG_0057"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 58 detected",
+      "id": "LOG_MSG_0058"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 59 detected",
+      "id": "LOG_MSG_0059"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 60 detected",
+      "id": "LOG_MSG_0060"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 61 detected",
+      "id": "LOG_MSG_0061"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 62 detected",
+      "id": "LOG_MSG_0062"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 63 detected",
+      "id": "LOG_MSG_0063"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 64 detected",
+      "id": "LOG_MSG_0064"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 65 detected",
+      "id": "LOG_MSG_0065"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 66 detected",
+      "id": "LOG_MSG_0066"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 67 detected",
+      "id": "LOG_MSG_0067"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 68 detected",
+      "id": "LOG_MSG_0068"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 69 detected",
+      "id": "LOG_MSG_0069"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 70 detected",
+      "id": "LOG_MSG_0070"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 71 detected",
+      "id": "LOG_MSG_0071"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 72 detected",
+      "id": "LOG_MSG_0072"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 73 detected",
+      "id": "LOG_MSG_0073"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 74 detected",
+      "id": "LOG_MSG_0074"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 75 detected",
+      "id": "LOG_MSG_0075"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 76 detected",
+      "id": "LOG_MSG_0076"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 77 detected",
+      "id": "LOG_MSG_0077"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 78 detected",
+      "id": "LOG_MSG_0078"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 79 detected",
+      "id": "LOG_MSG_0079"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 80 detected",
+      "id": "LOG_MSG_0080"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 81 detected",
+      "id": "LOG_MSG_0081"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 82 detected",
+      "id": "LOG_MSG_0082"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 83 detected",
+      "id": "LOG_MSG_0083"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 84 detected",
+      "id": "LOG_MSG_0084"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 85 detected",
+      "id": "LOG_MSG_0085"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 86 detected",
+      "id": "LOG_MSG_0086"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 87 detected",
+      "id": "LOG_MSG_0087"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 88 detected",
+      "id": "LOG_MSG_0088"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 89 detected",
+      "id": "LOG_MSG_0089"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 90 detected",
+      "id": "LOG_MSG_0090"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 91 detected",
+      "id": "LOG_MSG_0091"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 92 detected",
+      "id": "LOG_MSG_0092"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 93 detected",
+      "id": "LOG_MSG_0093"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 94 detected",
+      "id": "LOG_MSG_0094"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 95 detected",
+      "id": "LOG_MSG_0095"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 96 detected",
+      "id": "LOG_MSG_0096"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 97 detected",
+      "id": "LOG_MSG_0097"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 98 detected",
+      "id": "LOG_MSG_0098"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 99 detected",
+      "id": "LOG_MSG_0099"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 100 detected",
+      "id": "LOG_MSG_0100"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 101 detected",
+      "id": "LOG_MSG_0101"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 102 detected",
+      "id": "LOG_MSG_0102"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 103 detected",
+      "id": "LOG_MSG_0103"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 104 detected",
+      "id": "LOG_MSG_0104"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 105 detected",
+      "id": "LOG_MSG_0105"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 106 detected",
+      "id": "LOG_MSG_0106"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 107 detected",
+      "id": "LOG_MSG_0107"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 108 detected",
+      "id": "LOG_MSG_0108"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 109 detected",
+      "id": "LOG_MSG_0109"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 110 detected",
+      "id": "LOG_MSG_0110"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 111 detected",
+      "id": "LOG_MSG_0111"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 112 detected",
+      "id": "LOG_MSG_0112"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 113 detected",
+      "id": "LOG_MSG_0113"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 114 detected",
+      "id": "LOG_MSG_0114"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 115 detected",
+      "id": "LOG_MSG_0115"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 116 detected",
+      "id": "LOG_MSG_0116"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 117 detected",
+      "id": "LOG_MSG_0117"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 118 detected",
+      "id": "LOG_MSG_0118"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 119 detected",
+      "id": "LOG_MSG_0119"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 120 detected",
+      "id": "LOG_MSG_0120"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 121 detected",
+      "id": "LOG_MSG_0121"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 122 detected",
+      "id": "LOG_MSG_0122"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 123 detected",
+      "id": "LOG_MSG_0123"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 124 detected",
+      "id": "LOG_MSG_0124"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 125 detected",
+      "id": "LOG_MSG_0125"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 126 detected",
+      "id": "LOG_MSG_0126"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 127 detected",
+      "id": "LOG_MSG_0127"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 128 detected",
+      "id": "LOG_MSG_0128"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 129 detected",
+      "id": "LOG_MSG_0129"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 130 detected",
+      "id": "LOG_MSG_0130"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 131 detected",
+      "id": "LOG_MSG_0131"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 132 detected",
+      "id": "LOG_MSG_0132"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 133 detected",
+      "id": "LOG_MSG_0133"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 134 detected",
+      "id": "LOG_MSG_0134"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 135 detected",
+      "id": "LOG_MSG_0135"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 136 detected",
+      "id": "LOG_MSG_0136"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 137 detected",
+      "id": "LOG_MSG_0137"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 138 detected",
+      "id": "LOG_MSG_0138"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 139 detected",
+      "id": "LOG_MSG_0139"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 140 detected",
+      "id": "LOG_MSG_0140"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 141 detected",
+      "id": "LOG_MSG_0141"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 142 detected",
+      "id": "LOG_MSG_0142"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 143 detected",
+      "id": "LOG_MSG_0143"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 144 detected",
+      "id": "LOG_MSG_0144"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 145 detected",
+      "id": "LOG_MSG_0145"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 146 detected",
+      "id": "LOG_MSG_0146"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 147 detected",
+      "id": "LOG_MSG_0147"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 148 detected",
+      "id": "LOG_MSG_0148"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 149 detected",
+      "id": "LOG_MSG_0149"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 150 detected",
+      "id": "LOG_MSG_0150"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 151 detected",
+      "id": "LOG_MSG_0151"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 152 detected",
+      "id": "LOG_MSG_0152"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 153 detected",
+      "id": "LOG_MSG_0153"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 154 detected",
+      "id": "LOG_MSG_0154"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 155 detected",
+      "id": "LOG_MSG_0155"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 156 detected",
+      "id": "LOG_MSG_0156"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 157 detected",
+      "id": "LOG_MSG_0157"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 158 detected",
+      "id": "LOG_MSG_0158"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 159 detected",
+      "id": "LOG_MSG_0159"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 160 detected",
+      "id": "LOG_MSG_0160"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 161 detected",
+      "id": "LOG_MSG_0161"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 162 detected",
+      "id": "LOG_MSG_0162"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 163 detected",
+      "id": "LOG_MSG_0163"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 164 detected",
+      "id": "LOG_MSG_0164"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 165 detected",
+      "id": "LOG_MSG_0165"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 166 detected",
+      "id": "LOG_MSG_0166"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 167 detected",
+      "id": "LOG_MSG_0167"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 168 detected",
+      "id": "LOG_MSG_0168"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 169 detected",
+      "id": "LOG_MSG_0169"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 170 detected",
+      "id": "LOG_MSG_0170"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 171 detected",
+      "id": "LOG_MSG_0171"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 172 detected",
+      "id": "LOG_MSG_0172"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 173 detected",
+      "id": "LOG_MSG_0173"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 174 detected",
+      "id": "LOG_MSG_0174"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 175 detected",
+      "id": "LOG_MSG_0175"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 176 detected",
+      "id": "LOG_MSG_0176"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 177 detected",
+      "id": "LOG_MSG_0177"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 178 detected",
+      "id": "LOG_MSG_0178"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 179 detected",
+      "id": "LOG_MSG_0179"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 180 detected",
+      "id": "LOG_MSG_0180"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 181 detected",
+      "id": "LOG_MSG_0181"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 182 detected",
+      "id": "LOG_MSG_0182"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 183 detected",
+      "id": "LOG_MSG_0183"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 184 detected",
+      "id": "LOG_MSG_0184"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 185 detected",
+      "id": "LOG_MSG_0185"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 186 detected",
+      "id": "LOG_MSG_0186"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 187 detected",
+      "id": "LOG_MSG_0187"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 188 detected",
+      "id": "LOG_MSG_0188"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 189 detected",
+      "id": "LOG_MSG_0189"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 190 detected",
+      "id": "LOG_MSG_0190"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 191 detected",
+      "id": "LOG_MSG_0191"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 192 detected",
+      "id": "LOG_MSG_0192"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 193 detected",
+      "id": "LOG_MSG_0193"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 194 detected",
+      "id": "LOG_MSG_0194"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 195 detected",
+      "id": "LOG_MSG_0195"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 196 detected",
+      "id": "LOG_MSG_0196"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 197 detected",
+      "id": "LOG_MSG_0197"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 198 detected",
+      "id": "LOG_MSG_0198"
+    },
+    {
+      "label": "LogSignature",
+      "pattern": "Error code 199 detected",
+      "id": "LOG_MSG_0199"
+    },
+    {
+      "label": "Parameter",
+      "id": "SNR_Threshold"
+    },
+    {
+      "label": "Parameter",
+      "id": "Retry_Limit"
+    },
+    {
+      "label": "Parameter",
+      "id": "Beam_Index"
+    },
+    {
+      "label": "Parameter",
+      "id": "Subcarrier_Spacing"
+    },
+    {
+      "label": "Parameter",
+      "id": "Coding_Rate"
+    },
+    {
+      "label": "Parameter",
+      "id": "Modulation_Order"
     }
-]
+  ],
+  "edges": [
+    {
+      "type": "correlated_with",
+      "source": "5G_NR",
+      "target": "REG_0x405"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "LTE_PSS_Miss"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "LTE_SSS_Detection_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "LTE_CFO_Drift"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "LTE_Timing_Offset"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "LTE_Frame_Sync_Lost"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "LTE_Symbol_Boundary_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "5G_NR_PSS_Miss"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "5G_NR_SSS_Detection_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "5G_NR_CFO_Drift"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "5G_NR_Timing_Offset"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "5G_NR_Frame_Sync_Lost"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "5G_NR_Symbol_Boundary_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "WiFi_6_PSS_Miss"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "WiFi_6_SSS_Detection_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "WiFi_6_CFO_Drift"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "WiFi_6_Timing_Offset"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "WiFi_6_Frame_Sync_Lost"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "WiFi_6_Symbol_Boundary_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "NB-IoT_PSS_Miss"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "NB-IoT_SSS_Detection_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "NB-IoT_CFO_Drift"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "NB-IoT_Timing_Offset"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "NB-IoT_Frame_Sync_Lost"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "NB-IoT_Symbol_Boundary_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "ZigBee_PSS_Miss"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "ZigBee_SSS_Detection_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "ZigBee_CFO_Drift"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "ZigBee_Timing_Offset"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "ZigBee_Frame_Sync_Lost"
+    },
+    {
+      "type": "detects",
+      "source": "Sync_Unit",
+      "target": "ZigBee_Symbol_Boundary_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "LTE_Constellation_Mismatch"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "LTE_EVM_High"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "LTE_LDPC_Decode_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "LTE_CRC_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "LTE_Polar_Code_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "LTE_QAM_Demap_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "5G_NR_Constellation_Mismatch"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "5G_NR_EVM_High"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "5G_NR_LDPC_Decode_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "5G_NR_CRC_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "5G_NR_Polar_Code_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "5G_NR_QAM_Demap_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "WiFi_6_Constellation_Mismatch"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "WiFi_6_EVM_High"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "WiFi_6_LDPC_Decode_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "WiFi_6_CRC_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "WiFi_6_Polar_Code_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "WiFi_6_QAM_Demap_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "NB-IoT_Constellation_Mismatch"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "NB-IoT_EVM_High"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "NB-IoT_LDPC_Decode_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "NB-IoT_CRC_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "NB-IoT_Polar_Code_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "NB-IoT_QAM_Demap_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "ZigBee_Constellation_Mismatch"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "ZigBee_EVM_High"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "ZigBee_LDPC_Decode_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "ZigBee_CRC_Error"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "ZigBee_Polar_Code_Fail"
+    },
+    {
+      "type": "detects",
+      "source": "Demodulator",
+      "target": "ZigBee_QAM_Demap_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Demodulator",
+      "target": "ZigBee_SSS_Detection_Fail"
+    },
+    {
+      "type": "monitors",
+      "source": "Scheduler",
+      "target": "Context_Switch_Timeout"
+    },
+    {
+      "type": "monitors",
+      "source": "Scheduler",
+      "target": "Shadow_Reg_Update_Fail"
+    },
+    {
+      "type": "monitors",
+      "source": "Scheduler",
+      "target": "DMA_Bus_Hang"
+    },
+    {
+      "type": "monitors",
+      "source": "Scheduler",
+      "target": "Watchdog_Reset"
+    },
+    {
+      "type": "monitors",
+      "source": "Scheduler",
+      "target": "Instruction_Fetch_Error"
+    },
+    {
+      "type": "monitors",
+      "source": "Scheduler",
+      "target": "Memory_Parity_Error"
+    },
+    {
+      "type": "monitors",
+      "source": "Scheduler",
+      "target": "AXI_Bus_Lockup"
+    },
+    {
+      "type": "monitors",
+      "source": "Scheduler",
+      "target": "FIFO_Underrun"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Rate_Matcher",
+      "target": "LOG_MSG_0038"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Rate_Matcher",
+      "target": "LOG_MSG_0058"
+    },
+    {
+      "type": "correlated_with",
+      "source": "RRC_Manager",
+      "target": "Modulation_Order"
+    },
+    {
+      "type": "causes",
+      "source": "Low_SNR",
+      "target": "5G_NR_Frame_Sync_Lost"
+    },
+    {
+      "type": "causes",
+      "source": "High_Doppler",
+      "target": "LTE_Symbol_Boundary_Error"
+    },
+    {
+      "type": "causes",
+      "source": "High_Doppler",
+      "target": "5G_NR_PSS_Miss"
+    },
+    {
+      "type": "causes",
+      "source": "High_Doppler",
+      "target": "5G_NR_Symbol_Boundary_Error"
+    },
+    {
+      "type": "causes",
+      "source": "High_Doppler",
+      "target": "NB-IoT_CFO_Drift"
+    },
+    {
+      "type": "causes",
+      "source": "High_Doppler",
+      "target": "LTE_EVM_High"
+    },
+    {
+      "type": "causes",
+      "source": "High_Doppler",
+      "target": "5G_NR_EVM_High"
+    },
+    {
+      "type": "causes",
+      "source": "High_Doppler",
+      "target": "WiFi_6_EVM_High"
+    },
+    {
+      "type": "causes",
+      "source": "High_Doppler",
+      "target": "NB-IoT_EVM_High"
+    },
+    {
+      "type": "causes",
+      "source": "High_Doppler",
+      "target": "ZigBee_EVM_High"
+    },
+    {
+      "type": "causes",
+      "source": "Interference",
+      "target": "LTE_SSS_Detection_Fail"
+    },
+    {
+      "type": "causes",
+      "source": "Interference",
+      "target": "NB-IoT_PSS_Miss"
+    },
+    {
+      "type": "causes",
+      "source": "Interference",
+      "target": "ZigBee_PSS_Miss"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Interference",
+      "target": "NB-IoT_Constellation_Mismatch"
+    },
+    {
+      "type": "causes",
+      "source": "Buffer_Overflow",
+      "target": "LTE_Timing_Offset"
+    },
+    {
+      "type": "causes",
+      "source": "Buffer_Overflow",
+      "target": "NB-IoT_SSS_Detection_Fail"
+    },
+    {
+      "type": "causes",
+      "source": "Buffer_Overflow",
+      "target": "NB-IoT_Timing_Offset"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Buffer_Overflow",
+      "target": "LOG_MSG_0021"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Buffer_Overflow",
+      "target": "ZigBee_Frame_Sync_Lost"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Buffer_Overflow",
+      "target": "5G_NR_Increase_Power_50"
+    },
+    {
+      "type": "causes",
+      "source": "Clock_Jitter",
+      "target": "LTE_PSS_Miss"
+    },
+    {
+      "type": "causes",
+      "source": "Clock_Jitter",
+      "target": "WiFi_6_Symbol_Boundary_Error"
+    },
+    {
+      "type": "causes",
+      "source": "Clock_Jitter",
+      "target": "ZigBee_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Clock_Jitter",
+      "target": "LOG_MSG_0154"
+    },
+    {
+      "type": "causes",
+      "source": "Temperature_High",
+      "target": "ZigBee_Timing_Offset"
+    },
+    {
+      "type": "causes",
+      "source": "Multi_Path_Fading",
+      "target": "WiFi_6_Timing_Offset"
+    },
+    {
+      "type": "causes",
+      "source": "Multi_Path_Fading",
+      "target": "ZigBee_Symbol_Boundary_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Multi_Path_Fading",
+      "target": "Channel_Congestion"
+    },
+    {
+      "type": "causes",
+      "source": "Shadowing",
+      "target": "LTE_Frame_Sync_Lost"
+    },
+    {
+      "type": "causes",
+      "source": "Shadowing",
+      "target": "WiFi_6_SSS_Detection_Fail"
+    },
+    {
+      "type": "causes",
+      "source": "Shadowing",
+      "target": "NB-IoT_Frame_Sync_Lost"
+    },
+    {
+      "type": "causes",
+      "source": "Shadowing",
+      "target": "ZigBee_Frame_Sync_Lost"
+    },
+    {
+      "type": "causes",
+      "source": "Packet_Loss_Burst",
+      "target": "LTE_CFO_Drift"
+    },
+    {
+      "type": "causes",
+      "source": "Packet_Loss_Burst",
+      "target": "5G_NR_SSS_Detection_Fail"
+    },
+    {
+      "type": "causes",
+      "source": "Packet_Loss_Burst",
+      "target": "NB-IoT_Symbol_Boundary_Error"
+    },
+    {
+      "type": "causes",
+      "source": "Channel_Congestion",
+      "target": "5G_NR_CFO_Drift"
+    },
+    {
+      "type": "causes",
+      "source": "Channel_Congestion",
+      "target": "WiFi_6_Frame_Sync_Lost"
+    },
+    {
+      "type": "causes",
+      "source": "Channel_Congestion",
+      "target": "ZigBee_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Channel_Congestion",
+      "target": "NB-IoT_SSS_Detection_Fail"
+    },
+    {
+      "type": "causes",
+      "source": "Neighbor_Cell_Interference",
+      "target": "5G_NR_Timing_Offset"
+    },
+    {
+      "type": "causes",
+      "source": "Neighbor_Cell_Interference",
+      "target": "WiFi_6_PSS_Miss"
+    },
+    {
+      "type": "causes",
+      "source": "Neighbor_Cell_Interference",
+      "target": "WiFi_6_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Neighbor_Cell_Interference",
+      "target": "NB-IoT_Request_Retransmission_15"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Neighbor_Cell_Interference",
+      "target": "LOG_MSG_0136"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3E8",
+      "target": "DMA_Controller"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3E8",
+      "target": "LOG_MSG_0001"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3E9",
+      "target": "Scrambler"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3E9",
+      "target": "LOG_MSG_0091"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3E9",
+      "target": "ZigBee_Request_Retransmission_22"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3EA",
+      "target": "FFT_Engine"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3EA",
+      "target": "ZigBee_CFO_Drift"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3EB",
+      "target": "RRC_Manager"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3EC",
+      "target": "CRC_Checker"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3ED",
+      "target": "DMA_Controller"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3ED",
+      "target": "LOG_MSG_0078"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3ED",
+      "target": "5G_NR_Lower_MCS_20"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3EE",
+      "target": "RF_FrontEnd"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3EF",
+      "target": "Decoder"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3EF",
+      "target": "LTE_Lower_MCS_50"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3EF",
+      "target": "LOG_MSG_0177"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3F0",
+      "target": "Rate_Matcher"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3F1",
+      "target": "Scheduler"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3F1",
+      "target": "ModeSwitch"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3F2",
+      "target": "FFT_Engine"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3F3",
+      "target": "Scrambler"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3F3",
+      "target": "WiFi_6_Request_Retransmission_12"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3F4",
+      "target": "Decoder"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3F5",
+      "target": "L1_Controller"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3F5",
+      "target": "LOG_MSG_0014"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3F6",
+      "target": "MAC_Filter"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3F6",
+      "target": "5G_NR_EVM_High"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3F7",
+      "target": "Demodulator"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3F8",
+      "target": "Rate_Matcher"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3F8",
+      "target": "LOG_MSG_0189"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3F9",
+      "target": "DMA_Controller"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3F9",
+      "target": "LOG_MSG_0097"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3FA",
+      "target": "Rate_Matcher"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3FB",
+      "target": "RRC_Manager"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x3FB",
+      "target": "LOG_MSG_0025"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3FC",
+      "target": "Demodulator"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3FD",
+      "target": "Sync_Unit"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3FE",
+      "target": "RF_FrontEnd"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x3FF",
+      "target": "CRC_Checker"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x400",
+      "target": "Decoder"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x400",
+      "target": "LOG_MSG_0003"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x401",
+      "target": "MAC_Filter"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x402",
+      "target": "MAC_Filter"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x403",
+      "target": "Scheduler"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x404",
+      "target": "Scrambler"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x405",
+      "target": "MAC_Filter"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x406",
+      "target": "Sync_Unit"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x407",
+      "target": "Scrambler"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x408",
+      "target": "DMA_Controller"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x408",
+      "target": "LOG_MSG_0062"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x409",
+      "target": "Beam_Forming_Unit"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x40A",
+      "target": "DMA_Controller"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x40A",
+      "target": "LOG_MSG_0192"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x40B",
+      "target": "MAC_Filter"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x40B",
+      "target": "REG_0x407"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x40C",
+      "target": "Scheduler"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x40C",
+      "target": "LOG_MSG_0119"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x40D",
+      "target": "RRC_Manager"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x40D",
+      "target": "LOG_MSG_0190"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x40E",
+      "target": "Demodulator"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x40F",
+      "target": "Scrambler"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x40F",
+      "target": "LOG_MSG_0066"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x40F",
+      "target": "LOG_MSG_0180"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x410",
+      "target": "FFT_Engine"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x411",
+      "target": "MAC_Filter"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x412",
+      "target": "Beam_Forming_Unit"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x412",
+      "target": "REG_0x3F0"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x412",
+      "target": "WiFi_6_PSS_Miss"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x413",
+      "target": "Rate_Matcher"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x414",
+      "target": "L1_Controller"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x414",
+      "target": "Context_Switch_Timeout"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x415",
+      "target": "Scrambler"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x415",
+      "target": "LOG_MSG_0028"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x416",
+      "target": "Beam_Forming_Unit"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x417",
+      "target": "Interleaver"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x418",
+      "target": "Sync_Unit"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x418",
+      "target": "LOG_MSG_0017"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x418",
+      "target": "NB-IoT"
+    },
+    {
+      "type": "configures",
+      "source": "REG_0x419",
+      "target": "Interleaver"
+    },
+    {
+      "type": "correlated_with",
+      "source": "REG_0x419",
+      "target": "5G_NR_Constellation_Mismatch"
+    },
+    {
+      "type": "related_to",
+      "source": "LTE_PSS_Miss",
+      "target": "LTE"
+    },
+    {
+      "type": "fixes",
+      "source": "LTE_Adjust_Sync_Threshold_55",
+      "target": "LTE_PSS_Miss"
+    },
+    {
+      "type": "related_to",
+      "source": "LTE_SSS_Detection_Fail",
+      "target": "LTE"
+    },
+    {
+      "type": "fixes",
+      "source": "LTE_Reset_Sync_State_76",
+      "target": "LTE_SSS_Detection_Fail"
+    },
+    {
+      "type": "related_to",
+      "source": "LTE_CFO_Drift",
+      "target": "LTE"
+    },
+    {
+      "type": "fixes",
+      "source": "LTE_Widen_Search_Window_93",
+      "target": "LTE_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LTE_Widen_Search_Window_93",
+      "target": "5G_NR_Adjust_Sync_Threshold_56"
+    },
+    {
+      "type": "related_to",
+      "source": "LTE_Timing_Offset",
+      "target": "LTE"
+    },
+    {
+      "type": "fixes",
+      "source": "LTE_Widen_Search_Window_51",
+      "target": "LTE_Timing_Offset"
+    },
+    {
+      "type": "related_to",
+      "source": "LTE_Frame_Sync_Lost",
+      "target": "LTE"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LTE_Frame_Sync_Lost",
+      "target": "LOG_MSG_0065"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LTE_Frame_Sync_Lost",
+      "target": "LOG_MSG_0191"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LTE_Frame_Sync_Lost",
+      "target": "REG_0x40B"
+    },
+    {
+      "type": "fixes",
+      "source": "LTE_Reset_Sync_State_73",
+      "target": "LTE_Frame_Sync_Lost"
+    },
+    {
+      "type": "related_to",
+      "source": "LTE_Symbol_Boundary_Error",
+      "target": "LTE"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LTE_Symbol_Boundary_Error",
+      "target": "REG_0x409"
+    },
+    {
+      "type": "fixes",
+      "source": "LTE_Switch_Beam_87",
+      "target": "LTE_Symbol_Boundary_Error"
+    },
+    {
+      "type": "related_to",
+      "source": "5G_NR_PSS_Miss",
+      "target": "5G_NR"
+    },
+    {
+      "type": "fixes",
+      "source": "5G_NR_Widen_Search_Window_76",
+      "target": "5G_NR_PSS_Miss"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Widen_Search_Window_76",
+      "target": "LOG_MSG_0103"
+    },
+    {
+      "type": "related_to",
+      "source": "5G_NR_SSS_Detection_Fail",
+      "target": "5G_NR"
+    },
+    {
+      "type": "fixes",
+      "source": "5G_NR_Adjust_Sync_Threshold_76",
+      "target": "5G_NR_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Adjust_Sync_Threshold_76",
+      "target": "NB-IoT_PSS_Miss"
+    },
+    {
+      "type": "related_to",
+      "source": "5G_NR_CFO_Drift",
+      "target": "5G_NR"
+    },
+    {
+      "type": "fixes",
+      "source": "5G_NR_Adjust_Sync_Threshold_56",
+      "target": "5G_NR_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Adjust_Sync_Threshold_56",
+      "target": "NB-IoT_Request_Retransmission_21"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Adjust_Sync_Threshold_56",
+      "target": "ZigBee_Enable_Diversity_43"
+    },
+    {
+      "type": "related_to",
+      "source": "5G_NR_Timing_Offset",
+      "target": "5G_NR"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Timing_Offset",
+      "target": "LOG_MSG_0068"
+    },
+    {
+      "type": "fixes",
+      "source": "5G_NR_Reset_Sync_State_66",
+      "target": "5G_NR_Timing_Offset"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Reset_Sync_State_66",
+      "target": "LOG_MSG_0007"
+    },
+    {
+      "type": "related_to",
+      "source": "5G_NR_Frame_Sync_Lost",
+      "target": "5G_NR"
+    },
+    {
+      "type": "fixes",
+      "source": "5G_NR_Reset_Sync_State_18",
+      "target": "5G_NR_Frame_Sync_Lost"
+    },
+    {
+      "type": "related_to",
+      "source": "5G_NR_Symbol_Boundary_Error",
+      "target": "5G_NR"
+    },
+    {
+      "type": "fixes",
+      "source": "5G_NR_Switch_Beam_50",
+      "target": "5G_NR_Symbol_Boundary_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Switch_Beam_50",
+      "target": "LOG_MSG_0155"
+    },
+    {
+      "type": "related_to",
+      "source": "WiFi_6_PSS_Miss",
+      "target": "WiFi_6"
+    },
+    {
+      "type": "fixes",
+      "source": "WiFi_6_Widen_Search_Window_76",
+      "target": "WiFi_6_PSS_Miss"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Widen_Search_Window_76",
+      "target": "LOG_MSG_0126"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Widen_Search_Window_76",
+      "target": "LOG_MSG_0139"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Widen_Search_Window_76",
+      "target": "LOG_MSG_0110"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Widen_Search_Window_76",
+      "target": "ZigBee_Reset_Sync_State_100"
+    },
+    {
+      "type": "related_to",
+      "source": "WiFi_6_SSS_Detection_Fail",
+      "target": "WiFi_6"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_SSS_Detection_Fail",
+      "target": "WiFi_6_Widen_Search_Window_88"
+    },
+    {
+      "type": "fixes",
+      "source": "WiFi_6_Adjust_Sync_Threshold_26",
+      "target": "WiFi_6_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Adjust_Sync_Threshold_26",
+      "target": "LTE_PSS_Miss"
+    },
+    {
+      "type": "related_to",
+      "source": "WiFi_6_CFO_Drift",
+      "target": "WiFi_6"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_CFO_Drift",
+      "target": "LOG_MSG_0104"
+    },
+    {
+      "type": "fixes",
+      "source": "WiFi_6_Reset_Sync_State_12",
+      "target": "WiFi_6_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Reset_Sync_State_12",
+      "target": "Multi_Path_Fading"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Reset_Sync_State_12",
+      "target": "REG_0x412"
+    },
+    {
+      "type": "related_to",
+      "source": "WiFi_6_Timing_Offset",
+      "target": "WiFi_6"
+    },
+    {
+      "type": "fixes",
+      "source": "WiFi_6_Widen_Search_Window_13",
+      "target": "WiFi_6_Timing_Offset"
+    },
+    {
+      "type": "related_to",
+      "source": "WiFi_6_Frame_Sync_Lost",
+      "target": "WiFi_6"
+    },
+    {
+      "type": "fixes",
+      "source": "WiFi_6_Widen_Search_Window_88",
+      "target": "WiFi_6_Frame_Sync_Lost"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Widen_Search_Window_88",
+      "target": "Retry_Limit"
+    },
+    {
+      "type": "related_to",
+      "source": "WiFi_6_Symbol_Boundary_Error",
+      "target": "WiFi_6"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Symbol_Boundary_Error",
+      "target": "WiFi_6_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Symbol_Boundary_Error",
+      "target": "NB-IoT_Enable_Freq_Tracking_3"
+    },
+    {
+      "type": "fixes",
+      "source": "WiFi_6_Adjust_Sync_Threshold_57",
+      "target": "WiFi_6_Symbol_Boundary_Error"
+    },
+    {
+      "type": "related_to",
+      "source": "NB-IoT_PSS_Miss",
+      "target": "NB-IoT"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_PSS_Miss",
+      "target": "Retry_Limit"
+    },
+    {
+      "type": "fixes",
+      "source": "NB-IoT_Switch_Beam_43",
+      "target": "NB-IoT_PSS_Miss"
+    },
+    {
+      "type": "related_to",
+      "source": "NB-IoT_SSS_Detection_Fail",
+      "target": "NB-IoT"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_SSS_Detection_Fail",
+      "target": "ZigBee_Reset_Sync_State_100"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_SSS_Detection_Fail",
+      "target": "LOG_MSG_0104"
+    },
+    {
+      "type": "fixes",
+      "source": "NB-IoT_Reset_Sync_State_8",
+      "target": "NB-IoT_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_Reset_Sync_State_8",
+      "target": "Watchdog_Reset"
+    },
+    {
+      "type": "related_to",
+      "source": "NB-IoT_CFO_Drift",
+      "target": "NB-IoT"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_CFO_Drift",
+      "target": "LOG_MSG_0050"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_CFO_Drift",
+      "target": "REG_0x3F2"
+    },
+    {
+      "type": "fixes",
+      "source": "NB-IoT_Widen_Search_Window_44",
+      "target": "NB-IoT_CFO_Drift"
+    },
+    {
+      "type": "related_to",
+      "source": "NB-IoT_Timing_Offset",
+      "target": "NB-IoT"
+    },
+    {
+      "type": "fixes",
+      "source": "NB-IoT_Switch_Beam_35",
+      "target": "NB-IoT_Timing_Offset"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_Switch_Beam_35",
+      "target": "Temperature_High"
+    },
+    {
+      "type": "related_to",
+      "source": "NB-IoT_Frame_Sync_Lost",
+      "target": "NB-IoT"
+    },
+    {
+      "type": "fixes",
+      "source": "NB-IoT_Reset_Sync_State_40",
+      "target": "NB-IoT_Frame_Sync_Lost"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_Reset_Sync_State_40",
+      "target": "ZigBee_Enable_Freq_Tracking_3"
+    },
+    {
+      "type": "related_to",
+      "source": "NB-IoT_Symbol_Boundary_Error",
+      "target": "NB-IoT"
+    },
+    {
+      "type": "fixes",
+      "source": "NB-IoT_Enable_Freq_Tracking_3",
+      "target": "NB-IoT_Symbol_Boundary_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_Enable_Freq_Tracking_3",
+      "target": "LOG_MSG_0044"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_Enable_Freq_Tracking_3",
+      "target": "LOG_MSG_0036"
+    },
+    {
+      "type": "related_to",
+      "source": "ZigBee_PSS_Miss",
+      "target": "ZigBee"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_PSS_Miss",
+      "target": "ZigBee_Soft_Reset_Rx_74"
+    },
+    {
+      "type": "fixes",
+      "source": "ZigBee_Switch_Beam_25",
+      "target": "ZigBee_PSS_Miss"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Switch_Beam_25",
+      "target": "LOG_MSG_0042"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Switch_Beam_25",
+      "target": "LOG_MSG_0050"
+    },
+    {
+      "type": "related_to",
+      "source": "ZigBee_SSS_Detection_Fail",
+      "target": "ZigBee"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_SSS_Detection_Fail",
+      "target": "LOG_MSG_0102"
+    },
+    {
+      "type": "fixes",
+      "source": "ZigBee_Enable_Freq_Tracking_3",
+      "target": "ZigBee_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Enable_Freq_Tracking_3",
+      "target": "LOG_MSG_0045"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Enable_Freq_Tracking_3",
+      "target": "LTE_Adjust_Sync_Threshold_55"
+    },
+    {
+      "type": "related_to",
+      "source": "ZigBee_CFO_Drift",
+      "target": "ZigBee"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_CFO_Drift",
+      "target": "ZigBee_Reset_Sync_State_100"
+    },
+    {
+      "type": "fixes",
+      "source": "ZigBee_Enable_Freq_Tracking_84",
+      "target": "ZigBee_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Enable_Freq_Tracking_84",
+      "target": "LOG_MSG_0044"
+    },
+    {
+      "type": "related_to",
+      "source": "ZigBee_Timing_Offset",
+      "target": "ZigBee"
+    },
+    {
+      "type": "fixes",
+      "source": "ZigBee_Widen_Search_Window_39",
+      "target": "ZigBee_Timing_Offset"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Widen_Search_Window_39",
+      "target": "LOG_MSG_0111"
+    },
+    {
+      "type": "related_to",
+      "source": "ZigBee_Frame_Sync_Lost",
+      "target": "ZigBee"
+    },
+    {
+      "type": "fixes",
+      "source": "ZigBee_Reset_Sync_State_100",
+      "target": "ZigBee_Frame_Sync_Lost"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Reset_Sync_State_100",
+      "target": "REG_0x413"
+    },
+    {
+      "type": "related_to",
+      "source": "ZigBee_Symbol_Boundary_Error",
+      "target": "ZigBee"
+    },
+    {
+      "type": "fixes",
+      "source": "ZigBee_Adjust_Sync_Threshold_70",
+      "target": "ZigBee_Symbol_Boundary_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Adjust_Sync_Threshold_70",
+      "target": "LOG_MSG_0063"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LTE_Constellation_Mismatch",
+      "target": "REG_0x404"
+    },
+    {
+      "type": "fixes",
+      "source": "LTE_Request_Retransmission_8",
+      "target": "LTE_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LTE_Request_Retransmission_8",
+      "target": "REG_0x412"
+    },
+    {
+      "type": "fixes",
+      "source": "LTE_Request_Retransmission_99",
+      "target": "LTE_EVM_High"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LTE_Request_Retransmission_99",
+      "target": "LOG_MSG_0193"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LTE_LDPC_Decode_Fail",
+      "target": "LOG_MSG_0107"
+    },
+    {
+      "type": "fixes",
+      "source": "LTE_Enable_Diversity_72",
+      "target": "LTE_LDPC_Decode_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LTE_Enable_Diversity_72",
+      "target": "Rate_Matcher"
+    },
+    {
+      "type": "fixes",
+      "source": "LTE_Enable_Diversity_36",
+      "target": "LTE_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LTE_Enable_Diversity_36",
+      "target": "Rate_Matcher"
+    },
+    {
+      "type": "fixes",
+      "source": "LTE_Lower_MCS_72",
+      "target": "LTE_Polar_Code_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LTE_QAM_Demap_Error",
+      "target": "LOG_MSG_0188"
+    },
+    {
+      "type": "fixes",
+      "source": "LTE_Lower_MCS_50",
+      "target": "LTE_QAM_Demap_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Constellation_Mismatch",
+      "target": "LTE_Switch_Beam_87"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Constellation_Mismatch",
+      "target": "LOG_MSG_0015"
+    },
+    {
+      "type": "fixes",
+      "source": "5G_NR_Increase_Power_50",
+      "target": "5G_NR_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_EVM_High",
+      "target": "Low_SNR"
+    },
+    {
+      "type": "fixes",
+      "source": "5G_NR_Increase_Power_59",
+      "target": "5G_NR_EVM_High"
+    },
+    {
+      "type": "fixes",
+      "source": "5G_NR_Request_Retransmission_11",
+      "target": "5G_NR_LDPC_Decode_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Request_Retransmission_11",
+      "target": "REG_0x414"
+    },
+    {
+      "type": "fixes",
+      "source": "5G_NR_Lower_MCS_20",
+      "target": "5G_NR_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Lower_MCS_20",
+      "target": "LOG_MSG_0011"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Lower_MCS_20",
+      "target": "LOG_MSG_0166"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Lower_MCS_20",
+      "target": "LOG_MSG_0030"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Polar_Code_Fail",
+      "target": "LOG_MSG_0005"
+    },
+    {
+      "type": "fixes",
+      "source": "5G_NR_Request_Retransmission_87",
+      "target": "5G_NR_Polar_Code_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "5G_NR_Request_Retransmission_87",
+      "target": "LOG_MSG_0060"
+    },
+    {
+      "type": "fixes",
+      "source": "5G_NR_Soft_Reset_Rx_65",
+      "target": "5G_NR_QAM_Demap_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Constellation_Mismatch",
+      "target": "LTE_Polar_Code_Fail"
+    },
+    {
+      "type": "fixes",
+      "source": "WiFi_6_Increase_Power_7",
+      "target": "WiFi_6_Constellation_Mismatch"
+    },
+    {
+      "type": "fixes",
+      "source": "WiFi_6_Request_Retransmission_12",
+      "target": "WiFi_6_EVM_High"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Request_Retransmission_12",
+      "target": "LOG_MSG_0010"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_LDPC_Decode_Fail",
+      "target": "ZigBee_Enable_Freq_Tracking_3"
+    },
+    {
+      "type": "fixes",
+      "source": "WiFi_6_Enable_Diversity_47",
+      "target": "WiFi_6_LDPC_Decode_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Enable_Diversity_47",
+      "target": "LOG_MSG_0190"
+    },
+    {
+      "type": "fixes",
+      "source": "WiFi_6_Increase_Power_63",
+      "target": "WiFi_6_CRC_Error"
+    },
+    {
+      "type": "fixes",
+      "source": "WiFi_6_Request_Retransmission_55",
+      "target": "WiFi_6_Polar_Code_Fail"
+    },
+    {
+      "type": "fixes",
+      "source": "WiFi_6_Enable_Diversity_13",
+      "target": "WiFi_6_QAM_Demap_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "WiFi_6_Enable_Diversity_13",
+      "target": "5G_NR_Request_Retransmission_11"
+    },
+    {
+      "type": "fixes",
+      "source": "NB-IoT_Request_Retransmission_15",
+      "target": "NB-IoT_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_Request_Retransmission_15",
+      "target": "ZigBee_Reset_Sync_State_100"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_Request_Retransmission_15",
+      "target": "LOG_MSG_0041"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_EVM_High",
+      "target": "Channel_Congestion"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_EVM_High",
+      "target": "L1_Controller"
+    },
+    {
+      "type": "fixes",
+      "source": "NB-IoT_Enable_Diversity_93",
+      "target": "NB-IoT_EVM_High"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_Enable_Diversity_93",
+      "target": "LTE_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_LDPC_Decode_Fail",
+      "target": "LTE_Widen_Search_Window_51"
+    },
+    {
+      "type": "fixes",
+      "source": "NB-IoT_Enable_Diversity_51",
+      "target": "NB-IoT_LDPC_Decode_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_Enable_Diversity_51",
+      "target": "LOG_MSG_0082"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_CRC_Error",
+      "target": "REG_0x3F2"
+    },
+    {
+      "type": "fixes",
+      "source": "NB-IoT_Request_Retransmission_16",
+      "target": "NB-IoT_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "NB-IoT_Request_Retransmission_16",
+      "target": "LOG_MSG_0070"
+    },
+    {
+      "type": "fixes",
+      "source": "NB-IoT_Increase_Power_24",
+      "target": "NB-IoT_Polar_Code_Fail"
+    },
+    {
+      "type": "fixes",
+      "source": "NB-IoT_Request_Retransmission_21",
+      "target": "NB-IoT_QAM_Demap_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Constellation_Mismatch",
+      "target": "LOG_MSG_0152"
+    },
+    {
+      "type": "fixes",
+      "source": "ZigBee_Increase_Power_12",
+      "target": "ZigBee_Constellation_Mismatch"
+    },
+    {
+      "type": "fixes",
+      "source": "ZigBee_Request_Retransmission_62",
+      "target": "ZigBee_EVM_High"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Request_Retransmission_62",
+      "target": "LOG_MSG_0181"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Request_Retransmission_62",
+      "target": "Scrambler"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_LDPC_Decode_Fail",
+      "target": "Scheduler"
+    },
+    {
+      "type": "fixes",
+      "source": "ZigBee_Soft_Reset_Rx_74",
+      "target": "ZigBee_LDPC_Decode_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Soft_Reset_Rx_74",
+      "target": "WiFi_6_CFO_Drift"
+    },
+    {
+      "type": "fixes",
+      "source": "ZigBee_Enable_Diversity_43",
+      "target": "ZigBee_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Polar_Code_Fail",
+      "target": "LOG_MSG_0125"
+    },
+    {
+      "type": "fixes",
+      "source": "ZigBee_Request_Retransmission_22",
+      "target": "ZigBee_Polar_Code_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_QAM_Demap_Error",
+      "target": "LOG_MSG_0043"
+    },
+    {
+      "type": "fixes",
+      "source": "ZigBee_Enable_Diversity_88",
+      "target": "ZigBee_QAM_Demap_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ZigBee_Enable_Diversity_88",
+      "target": "WiFi_6_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Context_Switch_Timeout",
+      "target": "LOG_MSG_0000"
+    },
+    {
+      "type": "fixes",
+      "source": "SOL_Force_Unlock_84",
+      "target": "Context_Switch_Timeout"
+    },
+    {
+      "type": "correlated_with",
+      "source": "SOL_Force_Unlock_84",
+      "target": "LOG_MSG_0036"
+    },
+    {
+      "type": "can_trigger",
+      "source": "ModeSwitch",
+      "target": "Context_Switch_Timeout"
+    },
+    {
+      "type": "can_trigger",
+      "source": "ModeSwitch",
+      "target": "Shadow_Reg_Update_Fail"
+    },
+    {
+      "type": "can_trigger",
+      "source": "ModeSwitch",
+      "target": "DMA_Bus_Hang"
+    },
+    {
+      "type": "can_trigger",
+      "source": "ModeSwitch",
+      "target": "Watchdog_Reset"
+    },
+    {
+      "type": "can_trigger",
+      "source": "ModeSwitch",
+      "target": "Instruction_Fetch_Error"
+    },
+    {
+      "type": "can_trigger",
+      "source": "ModeSwitch",
+      "target": "Memory_Parity_Error"
+    },
+    {
+      "type": "can_trigger",
+      "source": "ModeSwitch",
+      "target": "AXI_Bus_Lockup"
+    },
+    {
+      "type": "can_trigger",
+      "source": "ModeSwitch",
+      "target": "FIFO_Underrun"
+    },
+    {
+      "type": "correlated_with",
+      "source": "ModeSwitch",
+      "target": "LOG_MSG_0010"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Shadow_Reg_Update_Fail",
+      "target": "REG_0x405"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Shadow_Reg_Update_Fail",
+      "target": "RF_FrontEnd"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Shadow_Reg_Update_Fail",
+      "target": "REG_0x40B"
+    },
+    {
+      "type": "fixes",
+      "source": "SOL_Clear_Shadow_Buffer_94",
+      "target": "Shadow_Reg_Update_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "SOL_Clear_Shadow_Buffer_94",
+      "target": "LOG_MSG_0135"
+    },
+    {
+      "type": "correlated_with",
+      "source": "DMA_Bus_Hang",
+      "target": "LOG_MSG_0036"
+    },
+    {
+      "type": "fixes",
+      "source": "SOL_Flush_Pipeline_34",
+      "target": "DMA_Bus_Hang"
+    },
+    {
+      "type": "correlated_with",
+      "source": "SOL_Flush_Pipeline_34",
+      "target": "NB-IoT_Enable_Diversity_51"
+    },
+    {
+      "type": "correlated_with",
+      "source": "SOL_Flush_Pipeline_34",
+      "target": "Rate_Matcher"
+    },
+    {
+      "type": "fixes",
+      "source": "SOL_Force_Unlock_68",
+      "target": "Watchdog_Reset"
+    },
+    {
+      "type": "fixes",
+      "source": "SOL_Flush_Pipeline_48",
+      "target": "Instruction_Fetch_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Memory_Parity_Error",
+      "target": "LOG_MSG_0126"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Memory_Parity_Error",
+      "target": "5G_NR_Request_Retransmission_11"
+    },
+    {
+      "type": "fixes",
+      "source": "SOL_Clear_Shadow_Buffer_17",
+      "target": "Memory_Parity_Error"
+    },
+    {
+      "type": "fixes",
+      "source": "SOL_Clear_Shadow_Buffer_56",
+      "target": "AXI_Bus_Lockup"
+    },
+    {
+      "type": "correlated_with",
+      "source": "SOL_Clear_Shadow_Buffer_56",
+      "target": "LOG_MSG_0140"
+    },
+    {
+      "type": "correlated_with",
+      "source": "FIFO_Underrun",
+      "target": "RRC_Manager"
+    },
+    {
+      "type": "correlated_with",
+      "source": "FIFO_Underrun",
+      "target": "LOG_MSG_0167"
+    },
+    {
+      "type": "fixes",
+      "source": "SOL_Reset_CGRA_Tile_40",
+      "target": "FIFO_Underrun"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0000",
+      "target": "ZigBee_SSS_Detection_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0001",
+      "target": "NB-IoT_SSS_Detection_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0002",
+      "target": "NB-IoT_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0002",
+      "target": "LOG_MSG_0129"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0003",
+      "target": "LTE_Symbol_Boundary_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0003",
+      "target": "LOG_MSG_0059"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0004",
+      "target": "DMA_Bus_Hang"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0005",
+      "target": "ZigBee_QAM_Demap_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0005",
+      "target": "LOG_MSG_0153"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0006",
+      "target": "5G_NR_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0006",
+      "target": "NB-IoT_Enable_Diversity_51"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0007",
+      "target": "Shadow_Reg_Update_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0007",
+      "target": "REG_0x404"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0007",
+      "target": "Scheduler"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0007",
+      "target": "LTE_QAM_Demap_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0008",
+      "target": "ZigBee_Constellation_Mismatch"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0009",
+      "target": "WiFi_6_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0009",
+      "target": "LOG_MSG_0190"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0010",
+      "target": "LTE_EVM_High"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0011",
+      "target": "5G_NR_EVM_High"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0011",
+      "target": "LOG_MSG_0148"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0011",
+      "target": "LOG_MSG_0191"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0011",
+      "target": "Context_Switch_Timeout"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0012",
+      "target": "LTE_CRC_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0013",
+      "target": "WiFi_6_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0013",
+      "target": "REG_0x40F"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0014",
+      "target": "5G_NR_Constellation_Mismatch"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0015",
+      "target": "NB-IoT_EVM_High"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0015",
+      "target": "LOG_MSG_0107"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0016",
+      "target": "5G_NR_CFO_Drift"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0017",
+      "target": "WiFi_6_CFO_Drift"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0018",
+      "target": "WiFi_6_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0018",
+      "target": "LOG_MSG_0048"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0019",
+      "target": "ZigBee_EVM_High"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0020",
+      "target": "LTE_PSS_Miss"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0021",
+      "target": "WiFi_6_EVM_High"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0022",
+      "target": "LTE_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0022",
+      "target": "5G_NR_Switch_Beam_50"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0022",
+      "target": "LOG_MSG_0041"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0023",
+      "target": "ZigBee_QAM_Demap_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0023",
+      "target": "LTE_Enable_Diversity_36"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0024",
+      "target": "ZigBee_Symbol_Boundary_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0024",
+      "target": "LOG_MSG_0112"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0025",
+      "target": "LTE_EVM_High"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0026",
+      "target": "LTE_Constellation_Mismatch"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0027",
+      "target": "LTE_Frame_Sync_Lost"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0028",
+      "target": "WiFi_6_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0028",
+      "target": "LOG_MSG_0089"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0029",
+      "target": "ZigBee_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0029",
+      "target": "NB-IoT_Enable_Freq_Tracking_3"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0029",
+      "target": "5G_NR_CRC_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0030",
+      "target": "Instruction_Fetch_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0031",
+      "target": "ZigBee_EVM_High"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0032",
+      "target": "WiFi_6_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0032",
+      "target": "LOG_MSG_0075"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0032",
+      "target": "LTE_Switch_Beam_87"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0033",
+      "target": "NB-IoT_CFO_Drift"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0034",
+      "target": "WiFi_6_QAM_Demap_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0035",
+      "target": "WiFi_6_PSS_Miss"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0035",
+      "target": "5G_NR_Reset_Sync_State_18"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0036",
+      "target": "LTE_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0036",
+      "target": "5G_NR_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0036",
+      "target": "REG_0x3F5"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0037",
+      "target": "WiFi_6_LDPC_Decode_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0037",
+      "target": "5G_NR_Frame_Sync_Lost"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0038",
+      "target": "DMA_Bus_Hang"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0038",
+      "target": "REG_0x40E"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0039",
+      "target": "Shadow_Reg_Update_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0040",
+      "target": "ZigBee_QAM_Demap_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0040",
+      "target": "Neighbor_Cell_Interference"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0041",
+      "target": "LTE_Symbol_Boundary_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0041",
+      "target": "5G_NR_CRC_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0042",
+      "target": "FIFO_Underrun"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0042",
+      "target": "LOG_MSG_0135"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0043",
+      "target": "NB-IoT_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0043",
+      "target": "LOG_MSG_0104"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0043",
+      "target": "NB-IoT_Enable_Freq_Tracking_3"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0044",
+      "target": "NB-IoT_EVM_High"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0045",
+      "target": "5G_NR_Frame_Sync_Lost"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0045",
+      "target": "LOG_MSG_0199"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0045",
+      "target": "LOG_MSG_0113"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0046",
+      "target": "LTE_LDPC_Decode_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0046",
+      "target": "ZigBee_Soft_Reset_Rx_74"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0046",
+      "target": "Low_SNR"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0047",
+      "target": "NB-IoT_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0047",
+      "target": "LOG_MSG_0167"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0047",
+      "target": "5G_NR_Adjust_Sync_Threshold_76"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0048",
+      "target": "5G_NR_Polar_Code_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0048",
+      "target": "Modulation_Order"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0048",
+      "target": "High_Doppler"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0049",
+      "target": "NB-IoT_Frame_Sync_Lost"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0050",
+      "target": "ZigBee_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0050",
+      "target": "L1_Controller"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0051",
+      "target": "ZigBee_Symbol_Boundary_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0052",
+      "target": "ZigBee_LDPC_Decode_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0053",
+      "target": "5G_NR_Polar_Code_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0053",
+      "target": "LOG_MSG_0144"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0054",
+      "target": "5G_NR_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0054",
+      "target": "LOG_MSG_0089"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0055",
+      "target": "NB-IoT_CRC_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0056",
+      "target": "5G_NR_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0056",
+      "target": "ZigBee_Request_Retransmission_62"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0057",
+      "target": "ZigBee_Timing_Offset"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0058",
+      "target": "NB-IoT_CRC_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0059",
+      "target": "AXI_Bus_Lockup"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0059",
+      "target": "LTE_EVM_High"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0059",
+      "target": "LOG_MSG_0017"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0060",
+      "target": "5G_NR_Frame_Sync_Lost"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0061",
+      "target": "5G_NR_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0061",
+      "target": "LOG_MSG_0158"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0062",
+      "target": "NB-IoT_Timing_Offset"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0062",
+      "target": "LOG_MSG_0155"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0063",
+      "target": "5G_NR_LDPC_Decode_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0064",
+      "target": "5G_NR_Polar_Code_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0064",
+      "target": "ZigBee_Symbol_Boundary_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0065",
+      "target": "Context_Switch_Timeout"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0066",
+      "target": "Instruction_Fetch_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0066",
+      "target": "5G_NR_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0066",
+      "target": "REG_0x3E9"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0067",
+      "target": "NB-IoT_EVM_High"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0067",
+      "target": "ZigBee_QAM_Demap_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0068",
+      "target": "WiFi_6_CRC_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0069",
+      "target": "NB-IoT_Frame_Sync_Lost"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0069",
+      "target": "LOG_MSG_0091"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0070",
+      "target": "5G_NR_Frame_Sync_Lost"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0070",
+      "target": "LOG_MSG_0059"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0071",
+      "target": "5G_NR_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0071",
+      "target": "LOG_MSG_0118"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0072",
+      "target": "NB-IoT_Timing_Offset"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0072",
+      "target": "ZigBee_Request_Retransmission_22"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0072",
+      "target": "5G_NR_Reset_Sync_State_18"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0073",
+      "target": "5G_NR_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0073",
+      "target": "Shadowing"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0073",
+      "target": "LOG_MSG_0087"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0074",
+      "target": "WiFi_6_Polar_Code_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0075",
+      "target": "NB-IoT_Constellation_Mismatch"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0076",
+      "target": "ZigBee_QAM_Demap_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0076",
+      "target": "LOG_MSG_0059"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0076",
+      "target": "LOG_MSG_0116"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0077",
+      "target": "Instruction_Fetch_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0077",
+      "target": "WiFi_6_Increase_Power_7"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0077",
+      "target": "REG_0x3EE"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0078",
+      "target": "WiFi_6_Symbol_Boundary_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0078",
+      "target": "LOG_MSG_0100"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0079",
+      "target": "FIFO_Underrun"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0080",
+      "target": "LTE_PSS_Miss"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0081",
+      "target": "WiFi_6_EVM_High"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0082",
+      "target": "5G_NR_PSS_Miss"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0082",
+      "target": "LOG_MSG_0060"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0082",
+      "target": "REG_0x413"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0083",
+      "target": "LTE_PSS_Miss"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0083",
+      "target": "LOG_MSG_0077"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0083",
+      "target": "WiFi_6_Increase_Power_7"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0084",
+      "target": "5G_NR_Symbol_Boundary_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0084",
+      "target": "LOG_MSG_0159"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0085",
+      "target": "ZigBee_LDPC_Decode_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0086",
+      "target": "LTE_CFO_Drift"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0087",
+      "target": "NB-IoT_PSS_Miss"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0088",
+      "target": "5G_NR_EVM_High"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0089",
+      "target": "NB-IoT_CFO_Drift"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0090",
+      "target": "ZigBee_PSS_Miss"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0090",
+      "target": "LTE_Adjust_Sync_Threshold_55"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0091",
+      "target": "WiFi_6_QAM_Demap_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0091",
+      "target": "REG_0x412"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0091",
+      "target": "LOG_MSG_0141"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0092",
+      "target": "WiFi_6_Frame_Sync_Lost"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0093",
+      "target": "5G_NR_LDPC_Decode_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0094",
+      "target": "5G_NR_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0094",
+      "target": "SOL_Clear_Shadow_Buffer_94"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0094",
+      "target": "LOG_MSG_0019"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0094",
+      "target": "Memory_Parity_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0095",
+      "target": "NB-IoT_Timing_Offset"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0095",
+      "target": "NB-IoT_Polar_Code_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0096",
+      "target": "NB-IoT_Polar_Code_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0096",
+      "target": "Coding_Rate"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0097",
+      "target": "ZigBee_EVM_High"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0097",
+      "target": "LOG_MSG_0085"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0098",
+      "target": "NB-IoT_CFO_Drift"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0099",
+      "target": "LTE_Timing_Offset"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0100",
+      "target": "LTE_CFO_Drift"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0101",
+      "target": "FIFO_Underrun"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0102",
+      "target": "ZigBee_EVM_High"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0103",
+      "target": "Shadow_Reg_Update_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0103",
+      "target": "5G_NR_Increase_Power_50"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0104",
+      "target": "LTE_PSS_Miss"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0105",
+      "target": "LTE_EVM_High"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0105",
+      "target": "LOG_MSG_0197"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0105",
+      "target": "NB-IoT_Enable_Freq_Tracking_3"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0105",
+      "target": "LOG_MSG_0151"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0106",
+      "target": "5G_NR_CRC_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0107",
+      "target": "ZigBee_Polar_Code_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0108",
+      "target": "5G_NR_Timing_Offset"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0109",
+      "target": "Memory_Parity_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0110",
+      "target": "ZigBee_PSS_Miss"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0111",
+      "target": "LTE_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0111",
+      "target": "LOG_MSG_0119"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0112",
+      "target": "ZigBee_Symbol_Boundary_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0113",
+      "target": "ZigBee_PSS_Miss"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0113",
+      "target": "LOG_MSG_0043"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0114",
+      "target": "LTE_Symbol_Boundary_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0114",
+      "target": "LOG_MSG_0098"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0114",
+      "target": "LOG_MSG_0044"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0115",
+      "target": "ZigBee_Polar_Code_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0116",
+      "target": "ZigBee_PSS_Miss"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0117",
+      "target": "LTE_LDPC_Decode_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0117",
+      "target": "REG_0x416"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0118",
+      "target": "5G_NR_Timing_Offset"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0118",
+      "target": "5G_NR_Request_Retransmission_11"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0119",
+      "target": "WiFi_6_Polar_Code_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0119",
+      "target": "REG_0x3FD"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0119",
+      "target": "WiFi_6_Widen_Search_Window_88"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0120",
+      "target": "5G_NR_Constellation_Mismatch"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0121",
+      "target": "NB-IoT_EVM_High"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0122",
+      "target": "WiFi_6_Polar_Code_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0123",
+      "target": "NB-IoT_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0123",
+      "target": "Context_Switch_Timeout"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0124",
+      "target": "LTE_SSS_Detection_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0125",
+      "target": "DMA_Bus_Hang"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0126",
+      "target": "Shadow_Reg_Update_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0127",
+      "target": "5G_NR_SSS_Detection_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0128",
+      "target": "NB-IoT_Frame_Sync_Lost"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0129",
+      "target": "NB-IoT_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0129",
+      "target": "LTE_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0129",
+      "target": "LTE_EVM_High"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0130",
+      "target": "5G_NR_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0130",
+      "target": "LOG_MSG_0040"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0131",
+      "target": "LTE_Symbol_Boundary_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0132",
+      "target": "NB-IoT_Symbol_Boundary_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0132",
+      "target": "LOG_MSG_0020"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0133",
+      "target": "WiFi_6_CRC_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0134",
+      "target": "LTE_Polar_Code_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0134",
+      "target": "LOG_MSG_0030"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0134",
+      "target": "LOG_MSG_0175"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0135",
+      "target": "WiFi_6_Symbol_Boundary_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0135",
+      "target": "ZigBee_Switch_Beam_25"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0136",
+      "target": "Instruction_Fetch_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0136",
+      "target": "LOG_MSG_0068"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0137",
+      "target": "ZigBee_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0137",
+      "target": "LOG_MSG_0096"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0137",
+      "target": "ZigBee_Polar_Code_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0137",
+      "target": "LOG_MSG_0038"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0138",
+      "target": "DMA_Bus_Hang"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0138",
+      "target": "REG_0x40E"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0139",
+      "target": "5G_NR_CRC_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0140",
+      "target": "ZigBee_QAM_Demap_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0141",
+      "target": "ZigBee_QAM_Demap_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0142",
+      "target": "LTE_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0142",
+      "target": "LTE_Reset_Sync_State_73"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0143",
+      "target": "LTE_Timing_Offset"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0143",
+      "target": "LOG_MSG_0163"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0143",
+      "target": "LOG_MSG_0083"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0144",
+      "target": "WiFi_6_CFO_Drift"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0145",
+      "target": "LTE_PSS_Miss"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0145",
+      "target": "LOG_MSG_0005"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0146",
+      "target": "LTE_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0146",
+      "target": "LTE_Adjust_Sync_Threshold_55"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0147",
+      "target": "Instruction_Fetch_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0148",
+      "target": "5G_NR_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0148",
+      "target": "LOG_MSG_0167"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0149",
+      "target": "NB-IoT_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0149",
+      "target": "LOG_MSG_0107"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0149",
+      "target": "LOG_MSG_0085"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0150",
+      "target": "FIFO_Underrun"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0150",
+      "target": "ZigBee_Enable_Freq_Tracking_3"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0150",
+      "target": "LOG_MSG_0126"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0151",
+      "target": "5G_NR_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0151",
+      "target": "L1_Controller"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0152",
+      "target": "LTE_Polar_Code_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0152",
+      "target": "MAC_Filter"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0153",
+      "target": "NB-IoT_EVM_High"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0153",
+      "target": "LOG_MSG_0079"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0154",
+      "target": "WiFi_6_Timing_Offset"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0154",
+      "target": "ZigBee_Enable_Diversity_88"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0154",
+      "target": "REG_0x3F1"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0155",
+      "target": "LTE_CFO_Drift"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0156",
+      "target": "WiFi_6_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0156",
+      "target": "ZigBee_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0156",
+      "target": "LOG_MSG_0176"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0157",
+      "target": "5G_NR_EVM_High"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0157",
+      "target": "LOG_MSG_0178"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0158",
+      "target": "ZigBee_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0158",
+      "target": "LOG_MSG_0135"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0158",
+      "target": "NB-IoT_Enable_Diversity_93"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0159",
+      "target": "LTE_Timing_Offset"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0159",
+      "target": "LOG_MSG_0087"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0160",
+      "target": "5G_NR_Constellation_Mismatch"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0161",
+      "target": "ZigBee_EVM_High"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0162",
+      "target": "ZigBee_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0162",
+      "target": "WiFi_6_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0162",
+      "target": "REG_0x409"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0163",
+      "target": "5G_NR_QAM_Demap_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0163",
+      "target": "LOG_MSG_0105"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0164",
+      "target": "WiFi_6_QAM_Demap_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0165",
+      "target": "Context_Switch_Timeout"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0166",
+      "target": "NB-IoT_QAM_Demap_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0167",
+      "target": "WiFi_6_LDPC_Decode_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0168",
+      "target": "5G_NR_Frame_Sync_Lost"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0169",
+      "target": "LTE_Constellation_Mismatch"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0170",
+      "target": "WiFi_6_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0170",
+      "target": "AXI_Bus_Lockup"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0171",
+      "target": "Shadow_Reg_Update_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0171",
+      "target": "LOG_MSG_0118"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0172",
+      "target": "ZigBee_Timing_Offset"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0172",
+      "target": "LTE_Widen_Search_Window_93"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0173",
+      "target": "NB-IoT_Timing_Offset"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0174",
+      "target": "NB-IoT_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0174",
+      "target": "LOG_MSG_0196"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0174",
+      "target": "Clock_Jitter"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0175",
+      "target": "WiFi_6_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0175",
+      "target": "WiFi_6_Constellation_Mismatch"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0176",
+      "target": "5G_NR_Polar_Code_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0177",
+      "target": "ZigBee_Polar_Code_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0178",
+      "target": "5G_NR_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0178",
+      "target": "ZigBee_Adjust_Sync_Threshold_70"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0178",
+      "target": "REG_0x416"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0179",
+      "target": "NB-IoT_Polar_Code_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0179",
+      "target": "LTE_Frame_Sync_Lost"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0180",
+      "target": "WiFi_6_PSS_Miss"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0180",
+      "target": "ZigBee_Constellation_Mismatch"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0181",
+      "target": "ZigBee_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0181",
+      "target": "Buffer_Overflow"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0182",
+      "target": "Instruction_Fetch_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0182",
+      "target": "REG_0x405"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0182",
+      "target": "LOG_MSG_0186"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0183",
+      "target": "NB-IoT_LDPC_Decode_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0183",
+      "target": "5G_NR_Reset_Sync_State_18"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0184",
+      "target": "ZigBee_LDPC_Decode_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0185",
+      "target": "LTE_SSS_Detection_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0185",
+      "target": "REG_0x3E9"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0186",
+      "target": "NB-IoT_QAM_Demap_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0187",
+      "target": "WiFi_6_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0187",
+      "target": "Packet_Loss_Burst"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0188",
+      "target": "LTE_QAM_Demap_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0189",
+      "target": "LTE_SSS_Detection_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0190",
+      "target": "ZigBee_Constellation_Mismatch"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0190",
+      "target": "WiFi_6_Enable_Diversity_47"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0190",
+      "target": "Neighbor_Cell_Interference"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0191",
+      "target": "5G_NR_SSS_Detection_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0192",
+      "target": "ZigBee_Polar_Code_Fail"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0193",
+      "target": "5G_NR_LDPC_Decode_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0193",
+      "target": "Voltage_Drop"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0194",
+      "target": "5G_NR_Symbol_Boundary_Error"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0195",
+      "target": "LTE_LDPC_Decode_Fail"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0195",
+      "target": "SOL_Clear_Shadow_Buffer_17"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0196",
+      "target": "WiFi_6_CFO_Drift"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0196",
+      "target": "LOG_MSG_0049"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0197",
+      "target": "NB-IoT_CRC_Error"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0197",
+      "target": "LOG_MSG_0128"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0198",
+      "target": "5G_NR_CFO_Drift"
+    },
+    {
+      "type": "indicates",
+      "source": "LOG_MSG_0199",
+      "target": "NB-IoT_Timing_Offset"
+    },
+    {
+      "type": "correlated_with",
+      "source": "LOG_MSG_0199",
+      "target": "LOG_MSG_0126"
+    },
+    {
+      "type": "configures",
+      "source": "SNR_Threshold",
+      "target": "CRC_Checker"
+    },
+    {
+      "type": "correlated_with",
+      "source": "SNR_Threshold",
+      "target": "LOG_MSG_0041"
+    },
+    {
+      "type": "correlated_with",
+      "source": "SNR_Threshold",
+      "target": "MAC_Filter"
+    },
+    {
+      "type": "correlated_with",
+      "source": "SNR_Threshold",
+      "target": "REG_0x411"
+    },
+    {
+      "type": "configures",
+      "source": "Retry_Limit",
+      "target": "RRC_Manager"
+    },
+    {
+      "type": "configures",
+      "source": "Beam_Index",
+      "target": "RF_FrontEnd"
+    },
+    {
+      "type": "configures",
+      "source": "Subcarrier_Spacing",
+      "target": "RF_FrontEnd"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Subcarrier_Spacing",
+      "target": "REG_0x416"
+    },
+    {
+      "type": "configures",
+      "source": "Coding_Rate",
+      "target": "RRC_Manager"
+    },
+    {
+      "type": "configures",
+      "source": "Modulation_Order",
+      "target": "Decoder"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Modulation_Order",
+      "target": "WiFi_6_Request_Retransmission_12"
+    },
+    {
+      "type": "correlated_with",
+      "source": "Modulation_Order",
+      "target": "LOG_MSG_0091"
+    }
+  ]
+}
